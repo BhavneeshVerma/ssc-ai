@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRILL - Speed & Recall Trainer</title>
+    <!-- Google Fonts: Space Grotesk, DM Sans, JetBrains Mono, Outfit, Fraunces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300..900;1,9..40,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-light">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <div class="logo-text">DRILL <span>PRO</span></div>
+            </div>
+            
+            <div class="profile-widget" id="activeProfileWidget">
+                <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                <div class="profile-info">
+                    <div class="profile-name" id="currentProfileName">Guest User</div>
+                    <div class="profile-tag" id="currentProfileStats">Accuracy: --</div>
+                </div>
+            </div>
+
+            <!-- Theme Switcher Widget -->
+            <div class="theme-switcher-widget">
+                <div class="theme-switcher-title"><i class="fa-solid fa-palette"></i> Switch Theme</div>
+                <div class="theme-btn-grid" id="themeSwitcher">
+                    <button class="theme-btn" data-theme="dark" title="Dark / Void"><i class="fa-solid fa-moon"></i></button>
+                    <button class="theme-btn active" data-theme="light" title="Light / Cream"><i class="fa-solid fa-sun"></i></button>
+                    <button class="theme-btn" data-theme="sepia" title="Sepia / Archive"><i class="fa-solid fa-book-open"></i></button>
+                    <button class="theme-btn" data-theme="neon" title="Electric / Neon"><i class="fa-solid fa-bolt"></i></button>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+                <button class="nav-btn" data-tab="training"><i class="fa-solid fa-gamepad"></i> Training Arena</button>
+                <button class="nav-btn" data-tab="learning"><i class="fa-solid fa-graduation-cap"></i> Learning Hub</button>
+                <button class="nav-btn" data-tab="analytics"><i class="fa-solid fa-chart-simple"></i> Analytics &amp; Mistakes</button>
+                <button class="nav-btn" data-tab="accounts"><i class="fa-solid fa-users-gear"></i> Profiles &amp; Accounts</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>SSC Exam Preparation Tool</p>
+                <span>v2.0.0 &bull; Modular Vite App</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- TAB 0: DASHBOARD -->
+            <section id="tab-dashboard" class="tab-content active">
+                <header class="tab-header">
+                    <div class="dashboard-greeting">
+                        <div class="greeting-text">
+                            <h2>Good Morning, <span id="dashWelcomeName">Ninja</span>! 👋</h2>
+                            <p>Here is what is happening with your training today.</p>
+                        </div>
+                        <div class="greeting-date" id="dashDateDisplay">Mon, 30 Jun 2025</div>
+                    </div>
+                </header>
+
+                <div class="dashboard-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-label">Accuracy</div>
+                        <div class="dash-stat-value accent" id="dashStatAccuracy">0%</div>
+                        <div class="dash-stat-sub" id="dashStatAccuracySub">0 / 0 correct</div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-label">Daily Streak</div>
+                        <div class="dash-stat-value" id="dashStatStreak">0</div>
+                        <div class="dash-stat-sub">Active consecutive days</div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-label">Today's Drills</div>
+                        <div class="dash-stat-value" id="dashStatToday">0</div>
+                        <div class="dash-stat-sub">Questions answered today</div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-label">All-Time Drills</div>
+                        <div class="dash-stat-value" id="dashStatTotal">0</div>
+                        <div class="dash-stat-sub">Total questions attempted</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-zones-grid">
+                    <!-- Strong Zones -->
+                    <div class="zone-card zone-strong">
+                        <div class="zone-title strong"><i class="fa-solid fa-circle-check"></i> Mastered / Strong Zones</div>
+                        <div class="zone-list" id="dashStrongList">
+                            <!-- Populated dynamically -->
+                            <div class="zone-empty">No mastered zones yet. Keep practicing!</div>
+                        </div>
+                    </div>
+                    <!-- Weak Zones -->
+                    <div class="zone-card zone-weak">
+                        <div class="zone-title weak"><i class="fa-solid fa-triangle-exclamation"></i> High Error / Weak Zones</div>
+                        <div class="zone-list" id="dashWeakList">
+                            <!-- Populated dynamically -->
+                            <div class="zone-empty">No high error zones detected!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-actions">
+                    <button class="dash-action-btn" id="dashActionStartCombined">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                        <div>
+                            <div style="font-weight: 800; font-size: 13px;">Start Combined Training</div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: none; font-weight: normal; margin-top: 2px;">Test all modes customized to your weak areas</div>
+                        </div>
+                        <span class="action-arrow">→</span>
+                    </button>
+                    <button class="dash-action-btn" id="dashActionTables">
+                        <i class="fa-solid fa-table-cells"></i>
+                        <div>
+                            <div style="font-weight: 800; font-size: 13px;">Mathematical Tables</div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: none; font-weight: normal; margin-top: 2px;">Study speed heatmaps for tables 1 to 50</div>
+                        </div>
+                        <span class="action-arrow">→</span>
+                    </button>
+                    <button class="dash-action-btn" id="dashActionAlpha">
+                        <i class="fa-solid fa-arrow-down-a-z"></i>
+                        <div>
+                            <div style="font-weight: 800; font-size: 13px;">Alphabet Mnemonics</div>
+                            <div style="font-size: 10px; color: var(--text-muted); text-transform: none; font-weight: normal; margin-top: 2px;">Review A-Z position grids and opposites</div>
+                        </div>
+                        <span class="action-arrow">→</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- TAB 1: TRAINING ARENA -->
+            <section id="tab-training" class="tab-content">
+                <header class="tab-header">
+                    <h1>Training Arena</h1>
+                    <p class="subtitle">Sharpen your mental speed and accuracy for SSC competitive exams.</p>
+                </header>
+
+                <div class="grid-layout">
+                    <!-- Left: Control & Practice Panel -->
+                    <div class="card panel-main">
+                        <div class="workout-setup" id="setupForm">
+                            <h3 class="panel-title"><i class="fa-solid fa-sliders"></i> Workout Configuration</h3>
+                            
+                            <div class="form-group">
+                                <label for="modeSelect">Select Training Mode</label>
+                                <select id="modeSelect">
+                                    <option value="alphaToNum">Alphabet ➔ Number (e.g., G = 7)</option>
+                                    <option value="numToAlpha">Number ➔ Alphabet (e.g., 14 = N)</option>
+                                    <option value="alphaOpposite">Alphabet ➔ Opposite (e.g., D = W)</option>
+                                    <option value="tables">Multiplication Tables (1 to 50)</option>
+                                    <option value="custom">Combined Training (Custom Run)</option>
+                                </select>
+                             </div>
+
+                             <!-- Multiplication Tables Range Sub-config -->
+                             <div class="form-group sub-config" id="tablesConfig" style="display: none;">
+                                 <label>Configure Table Range</label>
+                                 <div class="preset-buttons">
+                                     <button type="button" class="preset-btn active" data-range="1-50">All (1-50)</button>
+                                     <button type="button" class="preset-btn" data-range="1-10">Basic (1-10)</button>
+                                     <button type="button" class="preset-btn" data-range="11-20">Teens (11-20)</button>
+                                     <button type="button" class="preset-btn" data-range="12-19">SSC Prime (12-19)</button>
+                                     <button type="button" class="preset-btn" data-range="21-30">Hard (21-30)</button>
+                                 </div>
+                                 <div class="range-inputs">
+                                     <div class="input-inline">
+                                         <span>From</span>
+                                         <input type="number" id="tableStart" min="1" max="50" value="1">
+                                     </div>
+                                     <div class="input-inline">
+                                         <span>To</span>
+                                         <input type="number" id="tableEnd" min="1" max="50" value="50">
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <!-- Custom Combined Training Configuration -->
+                             <div class="form-group sub-config" id="customWorkoutConfig" style="display: none;">
+                                 <label class="block text-xs font-semibold text-[var(--text-muted)] mb-2">Select Combined Sub-Modes</label>
+                                 <div class="grid grid-cols-2 gap-2 mb-3">
+                                     <label class="flex items-center gap-2 text-xs cursor-pointer select-none">
+                                         <input type="checkbox" id="customOptAlphaToNum" checked class="w-3.5 h-3.5 accent-[var(--primary)]">
+                                         <span>Alpha ➔ Number</span>
+                                     </label>
+                                     <label class="flex items-center gap-2 text-xs cursor-pointer select-none">
+                                         <input type="checkbox" id="customOptNumToAlpha" checked class="w-3.5 h-3.5 accent-[var(--primary)]">
+                                         <span>Number ➔ Alpha</span>
+                                     </label>
+                                     <label class="flex items-center gap-2 text-xs cursor-pointer select-none">
+                                         <input type="checkbox" id="customOptAlphaOpposite" checked class="w-3.5 h-3.5 accent-[var(--primary)]">
+                                         <span>Opposite Letters</span>
+                                     </label>
+                                     <label class="flex items-center gap-2 text-xs cursor-pointer select-none">
+                                         <input type="checkbox" id="customOptTables" checked class="w-3.5 h-3.5 accent-[var(--primary)]">
+                                         <span>Math Tables</span>
+                                     </label>
+                                 </div>
+                                 <div id="customTablesInputGroup" class="mt-2 pt-2 border-t border-dashed border-[var(--border)]">
+                                     <label for="customTablesList" class="block text-xs text-[var(--text-muted)] mb-1">Practice Specific Tables (Commas, e.g. 17, 19)</label>
+                                     <input type="text" id="customTablesList" placeholder="e.g. 17, 19 (or leave blank for 1-50)" class="text-xs py-2 px-3">
+                                 </div>
+                             </div>
+
+                             <!-- Instant Submit Toggle -->
+                             <div class="form-group flex justify-between items-center py-2.5 mb-4 border-b border-[var(--border)]">
+                                 <label for="instantSubmitToggle" class="text-xs font-semibold text-[var(--text-muted)]">Instant Submit (Auto-check answers)</label>
+                                 <div class="heatmap-toggle-wrapper" id="instantSubmitToggle" style="margin: 0;">
+                                     <div class="toggle-switch"></div>
+                                 </div>
+                             </div>
+
+                             <div class="form-group">
+                                 <label for="timerSelect">Workout Duration</label>
+                                 <select id="timerSelect">
+                                     <option value="60">1 Minute Run</option>
+                                     <option value="120">2 Minutes Run</option>
+                                     <option value="180">3 Minutes Run</option>
+                                     <option value="300">5 Minutes Run</option>
+                                 </select>
+                             </div>
+
+                            <button id="startWorkoutBtn" class="btn btn-primary btn-large"><i class="fa-solid fa-circle-play"></i> Start Workout</button>
+                        </div>
+
+                        <!-- Active Training Engine -->
+                        <div class="workout-arena" id="workoutArena" style="display: none;">
+                            <div class="workout-header">
+                                <div class="stat-badge timer-badge" id="timerDisplay"><i class="fa-regular fa-clock"></i> --:--</div>
+                                <div class="stat-badge score-badge" id="scoreDisplay">SCORE: 0 / 0</div>
+                            </div>
+
+                            <div class="prompt-card">
+                                <p class="prompt-hint" id="promptHint">What is the numeric position of the letter?</p>
+                                <div class="prompt-text" id="promptQuestion">G</div>
+                            </div>
+
+                            <div class="input-area">
+                                <input type="text" id="answerInput" autocomplete="off" placeholder="Type answer here..." disabled>
+                                <button id="submitBtn" class="btn btn-accent" disabled>SUBMIT</button>
+                            </div>
+
+                            <div class="feedback-msg" id="feedbackDisplay"></div>
+
+                            <div class="workout-actions">
+                                <button id="skipBtn" class="btn btn-secondary"><i class="fa-solid fa-forward-step"></i> SKIP</button>
+                                <button id="stopWorkoutBtn" class="btn btn-danger"><i class="fa-solid fa-circle-stop"></i> STOP RUN</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Virtual Keyboard Pad (Excellent for mobile devices) -->
+                    <div class="card panel-keypad">
+                        <h3 class="panel-title"><i class="fa-solid fa-keyboard"></i> Virtual Keyboard Pad</h3>
+                        <p class="panel-description">Use on mobile devices for ultra-fast entry.</p>
+                        
+                        <!-- Number Keypad -->
+                        <div class="keypad-grid" id="numpadGrid">
+                            <button class="key-btn" data-key="1">1</button>
+                            <button class="key-btn" data-key="2">2</button>
+                            <button class="key-btn" data-key="3">3</button>
+                            <button class="key-btn" data-key="4">4</button>
+                            <button class="key-btn" data-key="5">5</button>
+                            <button class="key-btn" data-key="6">6</button>
+                            <button class="key-btn" data-key="7">7</button>
+                            <button class="key-btn" data-key="8">8</button>
+                            <button class="key-btn" data-key="9">9</button>
+                            <button class="key-btn btn-danger" data-key="backspace"><i class="fa-solid fa-backspace"></i></button>
+                            <button class="key-btn" data-key="0">0</button>
+                            <button class="key-btn btn-success" data-key="enter">Enter</button>
+                        </div>
+
+                        <!-- Alphabet Keypad (A-Z grid) -->
+                        <div class="keypad-grid-alpha" id="alphapadGrid" style="display: none;">
+                            <div class="keyboard-row">
+                                <button class="key-btn" data-key="Q">Q</button>
+                                <button class="key-btn" data-key="W">W</button>
+                                <button class="key-btn" data-key="E">E</button>
+                                <button class="key-btn" data-key="R">R</button>
+                                <button class="key-btn" data-key="T">T</button>
+                                <button class="key-btn" data-key="Y">Y</button>
+                                <button class="key-btn" data-key="U">U</button>
+                                <button class="key-btn" data-key="I">I</button>
+                                <button class="key-btn" data-key="O">O</button>
+                                <button class="key-btn" data-key="P">P</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key-btn" data-key="A">A</button>
+                                <button class="key-btn" data-key="S">S</button>
+                                <button class="key-btn" data-key="D">D</button>
+                                <button class="key-btn" data-key="F">F</button>
+                                <button class="key-btn" data-key="G">G</button>
+                                <button class="key-btn" data-key="H">H</button>
+                                <button class="key-btn" data-key="J">J</button>
+                                <button class="key-btn" data-key="K">K</button>
+                                <button class="key-btn" data-key="L">L</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="key-btn btn-danger" data-key="backspace"><i class="fa-solid fa-backspace"></i></button>
+                                <button class="key-btn" data-key="Z">Z</button>
+                                <button class="key-btn" data-key="X">X</button>
+                                <button class="key-btn" data-key="C">C</button>
+                                <button class="key-btn" data-key="V">V</button>
+                                <button class="key-btn" data-key="B">B</button>
+                                <button class="key-btn" data-key="N">N</button>
+                                <button class="key-btn" data-key="M">M</button>
+                                <button class="key-btn btn-success" data-key="enter">Enter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: LEARNING HUB -->
+            <section id="tab-learning" class="tab-content">
+                <header class="tab-header">
+                    <h1>Learning Hub</h1>
+                    <p class="subtitle">Study mathematical tables, alphabet sequences, and reasoning mnemonics.</p>
+                </header>
+
+                <div class="learning-tabs">
+                    <button class="l-tab-btn active" data-l-tab="math-tables">Mathematical Tables</button>
+                    <button class="l-tab-btn" data-l-tab="alpha-mnemonics">Alphabet Mnemonics</button>
+                    <button class="l-tab-btn" data-l-tab="reasoning-tricks">Reasoning Tricks</button>
+                </div>
+
+                <!-- SUB-TAB 1: MATHEMATICAL TABLES -->
+                <div class="learning-panel active" id="l-panel-math-tables">
+                    <div class="grid-layout learning-layout">
+                        <!-- Left Pane: 1-50 Tables Selection Grid -->
+                        <div class="card">
+                            <div class="tables-control-bar">
+                                <h3 class="panel-title" style="margin-bottom: 0;"><i class="fa-solid fa-table-cells"></i> Tables (1 to 50)</h3>
+                                <div class="heatmap-toggle-wrapper" id="heatmapToggle">
+                                    <span>Status Colors</span>
+                                    <div class="toggle-switch"></div>
+                                </div>
+                            </div>
+                            <p class="panel-description">Select a table to view its multiples. Enable "Status Colors" to see your memorization speed heatmap.</p>
+                            
+                            <div class="tables-grid-container">
+                                <div class="table-grid" id="tablesGrid">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Pane: Table Details -->
+                        <div class="card table-details-panel">
+                            <div class="table-details-header">
+                                <div class="table-details-title" id="selectedTableTitle">Table --</div>
+                                <button class="btn btn-primary btn-small" id="practiceTableBtn" style="width: auto;"><i class="fa-solid fa-circle-play"></i> Practice Table</button>
+                            </div>
+                            <div class="table-rows-list" id="tableRowsContainer">
+                                <div class="empty-state">Select a table from the grid on the left to inspect its values.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB 2: ALPHABET MNEMONICS -->
+                <div class="learning-panel" id="l-panel-alpha-mnemonics">
+                    <!-- Full A-Z Quick-Reference Table -->
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 class="panel-title"><i class="fa-solid fa-list-ol"></i> Full Alphabet Position Table (A to Z)</h3>
+                        <p class="panel-description">Every letter's position at a glance. The <span style="color:var(--primary);font-weight:700;">highlighted</span> ones are EJOTY anchors — memorise these 5 to derive the rest by counting ±1 or ±2.</p>
+                        <div class="az-position-grid">
+                            <div class="az-cell az-anchor"><span class="az-letter">A</span><span class="az-num">1</span></div>
+                            <div class="az-cell"><span class="az-letter">B</span><span class="az-num">2</span></div>
+                            <div class="az-cell"><span class="az-letter">C</span><span class="az-num">3</span></div>
+                            <div class="az-cell"><span class="az-letter">D</span><span class="az-num">4</span></div>
+                            <div class="az-cell az-ejoty"><span class="az-letter">E</span><span class="az-num">5</span></div>
+                            <div class="az-cell"><span class="az-letter">F</span><span class="az-num">6</span></div>
+                            <div class="az-cell"><span class="az-letter">G</span><span class="az-num">7</span></div>
+                            <div class="az-cell"><span class="az-letter">H</span><span class="az-num">8</span></div>
+                            <div class="az-cell"><span class="az-letter">I</span><span class="az-num">9</span></div>
+                            <div class="az-cell az-ejoty"><span class="az-letter">J</span><span class="az-num">10</span></div>
+                            <div class="az-cell"><span class="az-letter">K</span><span class="az-num">11</span></div>
+                            <div class="az-cell"><span class="az-letter">L</span><span class="az-num">12</span></div>
+                            <div class="az-cell"><span class="az-letter">M</span><span class="az-num">13</span></div>
+                            <div class="az-cell"><span class="az-letter">N</span><span class="az-num">14</span></div>
+                            <div class="az-cell az-ejoty"><span class="az-letter">O</span><span class="az-num">15</span></div>
+                            <div class="az-cell"><span class="az-letter">P</span><span class="az-num">16</span></div>
+                            <div class="az-cell"><span class="az-letter">Q</span><span class="az-num">17</span></div>
+                            <div class="az-cell"><span class="az-letter">R</span><span class="az-num">18</span></div>
+                            <div class="az-cell"><span class="az-letter">S</span><span class="az-num">19</span></div>
+                            <div class="az-cell az-ejoty"><span class="az-letter">T</span><span class="az-num">20</span></div>
+                            <div class="az-cell"><span class="az-letter">U</span><span class="az-num">21</span></div>
+                            <div class="az-cell"><span class="az-letter">V</span><span class="az-num">22</span></div>
+                            <div class="az-cell"><span class="az-letter">W</span><span class="az-num">23</span></div>
+                            <div class="az-cell"><span class="az-letter">X</span><span class="az-num">24</span></div>
+                            <div class="az-cell az-ejoty"><span class="az-letter">Y</span><span class="az-num">25</span></div>
+                            <div class="az-cell"><span class="az-letter">Z</span><span class="az-num">26</span></div>
+                        </div>
+                    </div>
+
+                    <div class="grid-layout learning-layout">
+                        <!-- Left: EJOTY / CFILORUX anchor cards -->
+                        <div class="card mnemonics-container">
+                            <h3 class="panel-title"><i class="fa-solid fa-anchor"></i> Memory Anchors</h3>
+                            <p class="panel-description">Memorise these anchor letters to count ±1 or ±2 to reach any position instantly.</p>
+                            <div class="mnemonic-card">
+                                <h4>EJOTY — Multiples of 5 (the Big 5 anchors)</h4>
+                                <div class="mnemonic-card-content" style="margin-top:8px;">
+                                    <div class="mnemonic-table-list">
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">E</span><span class="mnemonic-value">5</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">J</span><span class="mnemonic-value">10</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">O</span><span class="mnemonic-value">15</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">T</span><span class="mnemonic-value">20</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">Y</span><span class="mnemonic-value">25</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mnemonic-card" style="margin-top:12px;">
+                                <h4>CFILORUX — Multiples of 3</h4>
+                                <div class="mnemonic-card-content" style="margin-top:8px;">
+                                    <div class="mnemonic-table-list" style="grid-template-columns:repeat(4,1fr);">
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">C</span><span class="mnemonic-value">3</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">F</span><span class="mnemonic-value">6</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">I</span><span class="mnemonic-value">9</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">L</span><span class="mnemonic-value">12</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">O</span><span class="mnemonic-value">15</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">R</span><span class="mnemonic-value">18</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">U</span><span class="mnemonic-value">21</span></div>
+                                        <div class="mnemonic-table-item"><span class="mnemonic-letter">X</span><span class="mnemonic-value">24</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Opposite Letters -->
+                        <div class="card">
+                            <h3 class="panel-title"><i class="fa-solid fa-arrows-left-right"></i> Opposite Letters &amp; Mnemonics</h3>
+                            <p class="panel-description">All pairs where positions sum to 27. Learn the keyword phrase to recall the pair instantly.</p>
+                            <div class="tables-grid-container" style="max-height:420px;">
+                                <div class="opposite-grid">
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>A</span><span>Z</span></div><div class="opposite-word"><strong>A</strong>to<strong>Z</strong> / <strong>A</strong>zad</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>B</span><span>Y</span></div><div class="opposite-word"><strong>B</strong>o<strong>y</strong> / <strong>B</strong>y<strong>e</strong></div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>C</span><span>X</span></div><div class="opposite-word"><strong>C</strong>ru<strong>x</strong> / <strong>C</strong>o<strong>x</strong></div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>D</span><span>W</span></div><div class="opposite-word"><strong>D</strong>e<strong>w</strong> / <strong>D</strong>own</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>E</span><span>V</span></div><div class="opposite-word"><strong>E</strong>ven / Lo<strong>v</strong>e</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>F</span><span>U</span></div><div class="opposite-word"><strong>F</strong>l<strong>u</strong> / F<strong>u</strong>ll</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>G</span><span>T</span></div><div class="opposite-word"><strong>G</strong>.<strong>T</strong>. Road</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>H</span><span>S</span></div><div class="opposite-word"><strong>H</strong>igh <strong>S</strong>chool</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>I</span><span>R</span></div><div class="opposite-word"><strong>I</strong>ndian <strong>R</strong>ailway</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>J</span><span>Q</span></div><div class="opposite-word"><strong>J</strong>ungle <strong>Q</strong>ueen</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>K</span><span>P</span></div><div class="opposite-word"><strong>K</strong>an<strong>p</strong>ur / <strong>K</strong>.<strong>P</strong>.</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>L</span><span>O</span></div><div class="opposite-word"><strong>L</strong><strong>o</strong>ve</div></div>
+                                    <div class="opposite-pair-card"><div class="opposite-letters"><span>M</span><span>N</span></div><div class="opposite-word"><strong>M</strong>a<strong>n</strong></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB 3: REASONING TRICKS -->
+                <div class="learning-panel" id="l-panel-reasoning-tricks">
+                    <div class="grid-layout tricks-grid">
+                        <!-- Left: Squares 1-30 -->
+                        <div class="card">
+                            <h3 class="panel-title"><i class="fa-solid fa-square"></i> Speed Math: Squares (1 to 30)</h3>
+                            <p class="panel-description">Memorising these squares is essential for number-series and numerical reasoning.</p>
+                            <div class="scroll-table-box">
+                                <table class="shortcuts-table">
+                                    <thead>
+                                        <tr><th>x</th><th>x²</th><th>x</th><th>x²</th></tr>
+                                    </thead>
+                                    <tbody id="squaresTableBody">
+                                        <!-- Built dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Right: Cubes 1-20 & General tips -->
+                        <div class="card flex flex-col gap-4">
+                            <div>
+                                <h3 class="panel-title"><i class="fa-solid fa-cube"></i> Speed Math: Cubes (1 to 20)</h3>
+                                <p class="panel-description">Essential cubes for pattern recognition in number sequences.</p>
+                                <div class="scroll-table-box" style="max-height:220px;">
+                                    <table class="shortcuts-table">
+                                        <thead>
+                                            <tr><th>x</th><th>x³</th><th>x</th><th>x³</th></tr>
+                                        </thead>
+                                        <tbody id="cubesTableBody">
+                                            <!-- Built dynamically -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="mnemonic-card">
+                                <h4>Reasoning Tip: Unit Digit &amp; Digital Sum</h4>
+                                <div class="mnemonic-card-content">
+                                    Use units digit multiplication (e.g. 7×9 ends in 3) and digital sum analysis to quickly eliminate incorrect options in SSC reasoning multiple choice questions, bypassing complete calculations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: ANALYTICS -->
+            <section id="tab-analytics" class="tab-content">
+                <header class="tab-header">
+                    <h1>Performance Analytics</h1>
+                    <p class="subtitle">Track your accuracy trends and target specific error zones.</p>
+                </header>
+
+                <div class="grid-layout analytics-layout">
+                    <!-- Left: Mistakes list -->
+                    <div class="card mistake-sidebar">
+                        <div class="sidebar-stats-header">
+                            <h3 class="panel-title text-danger"><i class="fa-solid fa-triangle-exclamation"></i> High Error Zones</h3>
+                            <button id="resetStatsBtn" class="btn btn-secondary btn-small"><i class="fa-solid fa-trash-can"></i> Reset Stats</button>
+                        </div>
+                        <div class="mistake-tabs">
+                            <button class="m-tab-btn active" data-m-tab="alpha">Alphabets</button>
+                            <button class="m-tab-btn" data-m-tab="tables">Tables</button>
+                        </div>
+                        <div class="mistakes-container" id="mistakesListContainer">
+                            <!-- Populated by JS -->
+                            <div class="empty-state">No mistakes registered yet! Good job.</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual Mistake Chart -->
+                    <div class="card chart-panel">
+                        <h3 class="panel-title"><i class="fa-solid fa-chart-bar"></i> Mistake Distribution Chart</h3>
+                        <p class="panel-description">Shows mistake frequency. Try to flatten these bars to zero!</p>
+                        <div class="chart-wrapper">
+                            <canvas id="mistakeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: PROFILES & ACCOUNTS -->
+            <section id="tab-accounts" class="tab-content">
+                <header class="tab-header">
+                    <h1>Profiles & Accounts</h1>
+                    <p class="subtitle">Create multiple local accounts to track progress separately.</p>
+                </header>
+
+                <div class="profiles-layout">
+                    <!-- Create Profile Panel -->
+                    <div class="card profile-creator-card">
+                        <h3 class="panel-title"><i class="fa-solid fa-user-plus"></i> Create New Profile</h3>
+                        <div class="form-group">
+                            <label for="newProfileName">Profile Name</label>
+                            <input type="text" id="newProfileName" placeholder="Enter username (e.g. Bhavya)...">
+                        </div>
+                        <button id="createProfileBtn" class="btn btn-primary">Create Profile</button>
+                    </div>
+
+                    <!-- Manage Profiles List -->
+                    <div class="card profile-list-card">
+                        <h3 class="panel-title"><i class="fa-solid fa-users"></i> Available Profiles</h3>
+                        <div class="profiles-grid" id="profilesListGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Supabase DB Cloud Connect (Future Proofing UI) -->
+                    <div class="card cloud-card">
+                        <div class="cloud-header">
+                            <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
+                            <div>
+                                <h3 class="panel-title">Cloud Account Syncing</h3>
+                                <p class="panel-description">Sync stats across devices and show up on the leaderboard.</p>
+                            </div>
+                        </div>
+                        <div class="cloud-badge"><i class="fa-solid fa-circle-nodes"></i> Ready to Connect</div>
+                        <p class="cloud-text">This app is built to plug directly into a database like <strong>Supabase</strong>. To enable online accounts and cloud sync, simple configuration can be toggled by the admin.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals or overlays -->
+    <div class="modal-overlay" id="summaryModal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h2 class="modal-title">Workout Completed!</h2>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <span class="stat-val" id="modalCorrect">0</span>
+                    <span class="stat-lbl">Correct Answers</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-val" id="modalTotal">0</span>
+                    <span class="stat-lbl">Total Attempts</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-val" id="modalAccuracy">0%</span>
+                    <span class="stat-lbl">Accuracy</span>
+                </div>
+            </div>
+            <button id="closeModalBtn" class="btn btn-accent">Return to Arena</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

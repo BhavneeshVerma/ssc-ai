@@ -1,0 +1,112 @@
+/* =====================================================
+   BRUTALIST THEME SYSTEM
+   BOLD. FUNCTIONAL. UNAPOLOGETIC.
+   ===================================================== */
+
+/* THEME 1: Brutalist Light / Cream (Default) */
+.theme-light {
+    --bg-dark:     #EFEDE4;
+    --bg-panel:    #FFFFFF;
+    --bg-input:    #F4F2EA;
+    --text-main:   #111111;
+    --text-muted:  #666660;
+    --primary:       #C6FF00;
+    --primary-hover: #AADD00;
+    --primary-text:  #111111;
+    --danger:        #E32020;
+    --danger-hover:  #C01818;
+    --success:       #00BB44;
+    --warning:       #FF8800;
+    --border:        #111111;
+    --border-soft:   #CCCABC;
+    --shadow:        3px 3px 0px #111111;
+    --shadow-hover:  5px 5px 0px #111111;
+    --sidebar-bg:        #111111;
+    --sidebar-text:      #EFEDE4;
+    --sidebar-muted:     #888880;
+    --sidebar-active:    #C6FF00;
+    --sidebar-active-text: #111111;
+    --chart-accent: #C6FF00;
+    --accent-glow:  rgba(198, 255, 0, 0.2);
+}
+
+/* THEME 2: Brutalist Dark / Void */
+.theme-dark {
+    --bg-dark:     #0D0D0D;
+    --bg-panel:    #161616;
+    --bg-input:    #202020;
+    --text-main:   #F0EDDF;
+    --text-muted:  #777770;
+    --primary:       #C6FF00;
+    --primary-hover: #AADD00;
+    --primary-text:  #0D0D0D;
+    --danger:        #FF3030;
+    --danger-hover:  #DD1414;
+    --success:       #33EE66;
+    --warning:       #FFAA00;
+    --border:        #333330;
+    --border-soft:   #282825;
+    --shadow:        3px 3px 0px #C6FF00;
+    --shadow-hover:  5px 5px 0px #C6FF00;
+    --sidebar-bg:        #0D0D0D;
+    --sidebar-text:      #F0EDDF;
+    --sidebar-muted:     #666660;
+    --sidebar-active:    #C6FF00;
+    --sidebar-active-text: #0D0D0D;
+    --chart-accent: #C6FF00;
+    --accent-glow:  rgba(198, 255, 0, 0.15);
+}
+
+/* THEME 3: Sepia / Archive */
+.theme-sepia {
+    --bg-dark:     #EDE3CE;
+    --bg-panel:    #F7F0E0;
+    --bg-input:    #E8E0CC;
+    --text-main:   #2C1F0F;
+    --text-muted:  #7A6040;
+    --primary:       #D46B20;
+    --primary-hover: #B85018;
+    --primary-text:  #FFFFFF;
+    --danger:        #CC2200;
+    --danger-hover:  #AA1800;
+    --success:       #2D7A3A;
+    --warning:       #AA7700;
+    --border:        #2C1F0F;
+    --border-soft:   #D0C0A0;
+    --shadow:        3px 3px 0px #2C1F0F;
+    --shadow-hover:  5px 5px 0px #2C1F0F;
+    --sidebar-bg:        #2C1F0F;
+    --sidebar-text:      #EDE3CE;
+    --sidebar-muted:     #7A6040;
+    --sidebar-active:    #D46B20;
+    --sidebar-active-text: #FFFFFF;
+    --chart-accent: #D46B20;
+    --accent-glow:  rgba(212, 107, 32, 0.2);
+}
+
+/* THEME 4: Neon / Electric */
+.theme-neon {
+    --bg-dark:     #050510;
+    --bg-panel:    #0C0C22;
+    --bg-input:    #141430;
+    --text-main:   #EEEEFF;
+    --text-muted:  #8888CC;
+    --primary:       #9B5CFF;
+    --primary-hover: #7B3CEE;
+    --primary-text:  #FFFFFF;
+    --danger:        #FF3366;
+    --danger-hover:  #DD1144;
+    --success:       #22EE88;
+    --warning:       #FFCC00;
+    --border:        #251F50;
+    --border-soft:   #1A1640;
+    --shadow:        3px 3px 0px #9B5CFF;
+    --shadow-hover:  5px 5px 0px #9B5CFF;
+    --sidebar-bg:        #050510;
+    --sidebar-text:      #EEEEFF;
+    --sidebar-muted:     #6666AA;
+    --sidebar-active:    #9B5CFF;
+    --sidebar-active-text: #FFFFFF;
+    --chart-accent: #9B5CFF;
+    --accent-glow:  rgba(155, 92, 255, 0.25);
+}
