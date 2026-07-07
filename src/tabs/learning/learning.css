@@ -435,3 +435,75 @@
     font-weight: 600;
     color: var(--text-muted);
 }
+
+@media (max-width: 768px) {
+    #tab-learning,
+    #tab-learning * {
+        min-width: 0;
+    }
+
+    #tab-learning {
+        overflow-x: hidden;
+    }
+
+    #tab-learning .learning-tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        overflow-x: hidden;
+    }
+
+    #tab-learning .l-tab-btn {
+        width: 100%;
+        min-height: 44px;
+        justify-content: center;
+        white-space: normal;
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.2;
+        padding: 10px 12px;
+    }
+
+    #tab-learning .az-position-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    #tab-learning .az-cell {
+        min-height: 54px;
+        padding: 8px 4px;
+    }
+
+    #tab-learning .az-letter {
+        font-size: 16px;
+    }
+
+    #tab-learning .az-num {
+        font-size: 13px;
+    }
+
+    #tab-learning .opposite-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    #tab-learning .mnemonic-table-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    #tab-learning .mnemonic-card,
+    #tab-learning .table-details-panel,
+    #tab-learning .tables-grid-container {
+        overflow-x: hidden;
+    }
+
+    #tab-learning .panel-description,
+    #tab-learning .mnemonic-card-content,
+    #tab-learning .table-row,
+    #tab-learning .table-row-item,
+    #tab-learning .empty-state {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+}
