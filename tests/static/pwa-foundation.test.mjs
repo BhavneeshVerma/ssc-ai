@@ -192,3 +192,14 @@ test('supabase client uses vite environment variables only', () => {
   assert.doesNotMatch(client, /https:\/\/[a-z0-9-]+\.supabase\.co/i);
   assert.doesNotMatch(client, /eyJ[A-Za-z0-9_-]+\./);
 });
+
+test('auth session restore loads cloud profile and refreshes profile UI', () => {
+  const main = readText('src/main.js');
+  const profile = readText('src/tabs/profile/profile.js');
+
+  assert.match(main, /auth\.getSession\(\)/);
+  assert.match(main, /onAuthStateChange/);
+  assert.match(main, /loadActiveProfileFromCloud\(\)\.then/);
+  assert.match(main, /cloud-sync-changed/);
+  assert.match(profile, /export function renderCloudAuthState\(\)/);
+});

@@ -359,6 +359,7 @@ function initApplication() {
                 window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
                     detail: { status: 'disconnected', user: null }
                 }));
+                renderCloudAuthState();
             }
         });
     }
