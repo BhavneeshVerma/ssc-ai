@@ -165,3 +165,62 @@
 .qbank-list-container {
     border-radius: 4px;
 }
+
+.insights-tab-bar {
+    display: inline-grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 18px;
+    padding: 4px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+}
+
+.insights-tab-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+.insights-panel {
+    display: none;
+}
+
+.insights-panel.active {
+    display: block;
+}
+
+#i-panel-qbank.active {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .insights-tab-bar {
+        display: grid;
+        width: 100%;
+    }
+
+    #i-panel-qbank.active {
+        grid-template-columns: 1fr;
+    }
+
+    .qbank-list-container {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .qbank-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .delete-qbank-btn {
+        position: static !important;
+        align-self: flex-end;
+    }
+}

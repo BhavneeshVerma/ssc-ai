@@ -193,7 +193,7 @@ function displayQBankList() {
     
     filtered.forEach(q => {
         const card = document.createElement("div");
-        card.className = "card";
+        card.className = "card qbank-card";
         card.style.borderWidth = "2px";
         card.style.borderColor = "var(--border)";
         card.style.marginBottom = "10px";
@@ -256,6 +256,22 @@ function displayQBankList() {
     });
 }
 
+function setInsightsSubTab(tabId) {
+    activeInsightsSubTab = tabId;
+
+    document.querySelectorAll(".insights-tab-btn").forEach(btn => {
+        const isActive = btn.getAttribute("data-i-tab") === tabId;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", String(isActive));
+    });
+
+    document.querySelectorAll(".insights-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.id === `i-panel-${tabId}`);
+    });
+
+    renderInsightsTabState();
+}
+
 export function renderInsightsTabState() {
     if (activeInsightsSubTab === "analytics") {
         renderAnalyticsView();
@@ -266,25 +282,13 @@ export function renderInsightsTabState() {
 
 export function initInsights(onActiveProfileChanged) {
     const insightsTabBtns = document.querySelectorAll(".insights-tab-btn");
-    const insightsPanels = document.querySelectorAll(".insights-panel");
     const mTabBtns = document.querySelectorAll(".m-tab-btn");
     const resetStatsBtn = document.getElementById("resetStatsBtn");
     
     // Wire sub-tab buttons (Analytics vs QBank)
     insightsTabBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            insightsTabBtns.forEach(b => b.classList.remove("active"));
-            insightsPanels.forEach(p => p.style.display = "none");
-            
-            btn.classList.add("active");
-            activeInsightsSubTab = btn.getAttribute("data-i-tab");
-            
-            const targetPanel = document.getElementById(`i-panel-${activeInsightsSubTab}`);
-            if (targetPanel) {
-                targetPanel.style.display = activeInsightsSubTab === "analytics" ? "block" : "grid";
-            }
-            
-            renderInsightsTabState();
+            setInsightsSubTab(btn.getAttribute("data-i-tab"));
         });
     });
 
