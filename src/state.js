@@ -262,6 +262,8 @@ export async function syncActiveProfileToCloud() {
             .upsert({
                 user_id: user.id,
                 display_name: profile.name,
+                avatar_url: profile.avatarUrl || null,
+                avatar_initials: profile.avatarInitials || null,
                 all_time_correct: profile.all_time_correct,
                 all_time_total: profile.all_time_total,
                 streak: profile.streak || 0,
@@ -305,19 +307,38 @@ export async function loadActiveProfileFromCloud() {
         if (data) {
             const profileId = user.id;
             const localProfile = state.profiles[profileId] || state.profiles[state.activeProfileId] || {};
+            
+            // Merge check: If the cloud profile is empty (all_time_total is 0) but the local profile
+            // has progress (all_time_total > 0), sync the local profile to the cloud first.
+            // This prevents a trigger-created blank database row from overwriting local stats on first login.
+            const cloudIsEmpty = (data.all_time_total === 0 && data.all_time_correct === 0);
+            const localHasProgress = (localProfile.all_time_total > 0);
+
+            if (cloudIsEmpty && localHasProgress) {
+                console.log("Empty cloud profile detected with local progress. Syncing local profile first...");
+                state.profiles[profileId] = {
+                    ...normalizeProfileRecord(localProfile),
+                    all_time_correct: localProfile.all_time_correct || 0,
+                    all_time_total: localProfile.all_time_total || 0
+                };
+                state.activeProfileId = profileId;
+                await syncActiveProfileToCloud();
+                return;
+            }
+
             const mergedProfile = normalizeProfileRecord({
                 ...localProfile,
                 ...data,
-                name: data.display_name || localProfile.name || "Guest Ninja",
-                avatarUrl: data.avatarUrl ?? localProfile.avatarUrl ?? null,
-                avatarInitials: data.avatarInitials ?? localProfile.avatarInitials ?? getAvatarInitials(data.display_name || localProfile.name || "Guest Ninja"),
+                name: data.display_name || data.profile_name || localProfile.name || "Guest Ninja",
+                avatarUrl: data.avatar_url ?? localProfile.avatarUrl ?? null,
+                avatarInitials: data.avatar_initials ?? localProfile.avatarInitials ?? getAvatarInitials(data.display_name || data.profile_name || localProfile.name || "Guest Ninja"),
                 wrong_counts: data.wrong_counts ?? localProfile.wrong_counts ?? {},
                 table_wrong_counts: data.table_wrong_counts ?? localProfile.table_wrong_counts ?? {},
                 detailed_mistakes: data.detailed_mistakes ?? localProfile.detailed_mistakes ?? {},
                 streak: data.streak ?? localProfile.streak ?? 0,
                 today_count: data.today_count ?? localProfile.today_count ?? 0,
                 last_active_date: data.last_active_date ?? localProfile.last_active_date ?? ""
-            }, data.display_name || localProfile.name || "Guest Ninja");
+            }, data.display_name || data.profile_name || localProfile.name || "Guest Ninja");
             state.profiles[profileId] = {
                 ...mergedProfile,
                 all_time_correct: Number.isFinite(data.all_time_correct) ? data.all_time_correct : localProfile.all_time_correct || 0,

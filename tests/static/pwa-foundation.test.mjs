@@ -60,7 +60,7 @@ test('state migration and new profiles include avatar fields', () => {
   assert.match(state, /createProfile\([^)]*\)[\s\S]*avatarUrl/);
   assert.match(state, /loadStateFromStorage\([\s\S]*avatarUrl/);
   assert.match(state, /normalizeProfileRecord/);
-  assert.match(state, /avatarUrl:\s*data\.avatarUrl\s*\?\?/);
+  assert.match(state, /avatarUrl:\s*data\.avatar_url\s*\?\?/);
   assert.match(state, /wrong_counts:\s*data\.wrong_counts\s*\?\?/);
   assert.match(state, /table_wrong_counts:\s*data\.table_wrong_counts\s*\?\?/);
   assert.match(state, /detailed_mistakes:\s*data\.detailed_mistakes\s*\?\?/);
@@ -211,4 +211,7 @@ test('cloud profile sync is scoped by authenticated user id', () => {
   assert.match(state, /user_id/);
   assert.match(state, /\.eq\(["']user_id["'],\s*state\.supabaseUser\.id\)/);
   assert.match(state, /upsert/);
+  assert.match(state, /avatar_url:\s*profile\.avatarUrl/);
+  assert.match(state, /avatarUrl:\s*data\.avatar_url/);
+  assert.match(state, /data\.all_time_total\s*===\s*0/);
 });
