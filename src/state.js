@@ -263,7 +263,6 @@ export async function syncActiveProfileToCloud() {
                 user_id: user.id,
                 display_name: profile.name,
                 avatar_url: profile.avatarUrl || null,
-                avatar_initials: profile.avatarInitials || null,
                 all_time_correct: profile.all_time_correct,
                 all_time_total: profile.all_time_total,
                 streak: profile.streak || 0,
