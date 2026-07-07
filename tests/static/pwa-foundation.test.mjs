@@ -79,6 +79,38 @@ test('shell styles avoid global overflow clipping outside workout mode', () => {
   assert.doesNotMatch(nonWorkoutCss, /\.app-container\s*\{[^}]*overflow:\s*hidden/);
 });
 
+test('training run toggles a visible active workout surface', () => {
+  const html = readText('index.html');
+  const training = readText('src/tabs/training/training.js');
+  const trainingCss = readText('src/tabs/training/training.css');
+
+  assert.match(training, /function setWorkoutUiActive\(isActive\)/);
+  assert.match(training, /function ensureTrainingTabVisible\(\)/);
+  assert.match(training, /ensureTrainingTabVisible\(\);[\s\S]{0,120}workout\.isActive\s*=\s*true/);
+  assert.match(training, /state\.currentTab\s*=\s*["']training["']/);
+  assert.match(training, /setWorkoutUiActive\(true\)/);
+  assert.match(training, /setWorkoutUiActive\(false\)/);
+  assert.match(trainingCss, /\.workout-arena\.is-active\s*\{[\s\S]*display:\s*flex/);
+  assert.match(trainingCss, /\.workout-setup\.is-hidden\s*\{[\s\S]*display:\s*none/);
+  assert.doesNotMatch(html, /id=["']workoutArena["'][^>]*style=["'][^"']*display:\s*none/);
+  assert.doesNotMatch(training, /workoutArena\.style\.display\s*=\s*["']flex["']/);
+  assert.doesNotMatch(training, /setupForm\.style\.display\s*=\s*["']none["']/);
+});
+
+test('mobile dock is compact, glassy, and auto-hides while scrolling', () => {
+  const main = readText('src/main.js');
+  const css = readText('src/style.css');
+
+  assert.match(main, /function setupDockAutoHide\(\)/);
+  assert.match(main, /document\.body\.classList\.toggle\(["']dock-hidden["']/);
+  assert.match(main, /document\.querySelector\(["']\.app-main["']\)/);
+  assert.match(main, /window\.addEventListener\(["']scroll["'],\s*handleScroll/);
+  assert.match(css, /\.app-bottom-dock\s*\{[\s\S]*backdrop-filter:\s*blur/);
+  assert.match(css, /\.app-bottom-dock\s*\{[\s\S]*-webkit-backdrop-filter:\s*blur/);
+  assert.match(css, /body\.dock-hidden\s+\.app-bottom-dock/);
+  assert.match(css, /transform:\s*translate\(-50%,\s*calc\(100% \+ 24px\)\)/);
+});
+
 test('profile cloud layout stacks on mobile', () => {
   const css = readText('src/tabs/profile/profile.css');
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*display:\s*flex/);

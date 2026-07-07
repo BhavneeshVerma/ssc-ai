@@ -185,6 +185,48 @@ function setupRouting() {
     }
 }
 
+function setupDockAutoHide() {
+    const scrollRoot = document.querySelector(".app-main");
+    const dock = document.querySelector(".app-bottom-dock");
+    if (!scrollRoot || !dock) return;
+
+    const getScrollY = () => Math.max(
+        scrollRoot.scrollTop,
+        window.scrollY || document.documentElement.scrollTop || 0
+    );
+
+    let lastScrollY = getScrollY();
+    let ticking = false;
+
+    const setDockHidden = (hidden) => {
+        document.body.classList.toggle("dock-hidden", hidden && !state.currentWorkout.isActive);
+    };
+
+    const handleScroll = () => {
+        if (ticking) return;
+
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            const currentScrollY = getScrollY();
+            const delta = currentScrollY - lastScrollY;
+
+            if (currentScrollY < 24 || delta < -4) {
+                setDockHidden(false);
+            } else if (currentScrollY > 80 && delta > 4) {
+                setDockHidden(true);
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        });
+    };
+
+    scrollRoot.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    window.addEventListener("resize", () => setDockHidden(false));
+}
+
 // Theme Switcher Widget Logic
 function setupThemeSwitcher() {
     const themeSwitcher = document.getElementById("themeSwitcher");
@@ -261,6 +303,7 @@ function initApplication() {
     state.currentTab = "dashboard";
     
     setupRouting();
+    setupDockAutoHide();
     updateProfileCardWidgets();
     
     // Bootstrap tab modules

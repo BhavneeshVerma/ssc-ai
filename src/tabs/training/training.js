@@ -51,6 +51,43 @@ function getElements() {
     };
 }
 
+function setWorkoutUiActive(isActive) {
+    const el = getElements();
+
+    if (el.setupForm) {
+        el.setupForm.classList.toggle("is-hidden", isActive);
+        el.setupForm.setAttribute("aria-hidden", String(isActive));
+    }
+
+    if (el.workoutArena) {
+        el.workoutArena.classList.toggle("is-active", isActive);
+        el.workoutArena.setAttribute("aria-hidden", String(!isActive));
+    }
+
+    if (el.answerInput) el.answerInput.disabled = !isActive;
+    if (el.submitBtn) el.submitBtn.disabled = !isActive;
+}
+
+function ensureTrainingTabVisible() {
+    const trainingTab = document.getElementById("tab-training");
+    if (!trainingTab) return;
+
+    document.querySelectorAll(".tab-content").forEach(tab => {
+        tab.classList.toggle("active", tab.id === "tab-training");
+    });
+
+    document.querySelectorAll(".nav-btn, .dock-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-tab") === "training");
+    });
+
+    state.currentTab = "training";
+    document.body.classList.remove("dock-hidden");
+
+    const scrollRoot = document.querySelector(".app-main");
+    if (scrollRoot) scrollRoot.scrollTop = 0;
+    window.scrollTo(0, 0);
+}
+
 export function updateVisualAnswer() {
     const el = getElements();
     if (!el.visualAnswerText || !el.visualAnswerPlaceholder || !el.answerInput) return;
@@ -72,6 +109,7 @@ function onWorkoutStart() {
 
 function onWorkoutEnd() {
     document.body.classList.remove("workout-running");
+    document.body.classList.remove("dock-hidden");
     const el = getElements();
     if (el.answerInput) el.answerInput.classList.remove("hidden-capture-input");
     updateVisualAnswer();
@@ -290,10 +328,7 @@ export function stopWorkoutRun(interrupted = false) {
     clearInterval(workout.timerInterval);
     
     const el = getElements();
-    if (el.workoutArena) el.workoutArena.style.display = "none";
-    if (el.setupForm) el.setupForm.style.display = "block";
-    if (el.answerInput) el.answerInput.disabled = true;
-    if (el.submitBtn) el.submitBtn.disabled = true;
+    setWorkoutUiActive(false);
     onWorkoutEnd();
     
     // Make sure keypad is set to configuration mode default state
@@ -358,6 +393,7 @@ export function startWorkoutRun() {
                         alert("Your Question Bank is currently empty or all questions are mastered! Add some questions or make mistakes in other drills to populate it.");
                     } else {
                         // Start qbank drill
+                        ensureTrainingTabVisible();
                         workout.isActive = true;
                         workout.duration = parseInt(el.timerSelect.value) || 60;
                         workout.timeLeft = workout.duration;
@@ -365,10 +401,7 @@ export function startWorkoutRun() {
                         workout.total = 0;
                         workout.sessionLog = [];
                         
-                        el.setupForm.style.display = "none";
-                        el.workoutArena.style.display = "flex";
-                        el.answerInput.disabled = false;
-                        el.submitBtn.disabled = false;
+                        setWorkoutUiActive(true);
                         el.answerInput.value = "";
                         onWorkoutStart();
                         el.feedbackDisplay.textContent = "";
@@ -426,6 +459,7 @@ export function startWorkoutRun() {
         }
     }
 
+    ensureTrainingTabVisible();
     workout.isActive = true;
     workout.duration = parseInt(el.timerSelect.value) || 60;
     workout.timeLeft = workout.duration;
@@ -452,10 +486,7 @@ export function startWorkoutRun() {
         };
     }
     
-    el.setupForm.style.display = "none";
-    el.workoutArena.style.display = "flex";
-    el.answerInput.disabled = false;
-    el.submitBtn.disabled = false;
+    setWorkoutUiActive(true);
     el.answerInput.value = "";
     onWorkoutStart();
     el.feedbackDisplay.textContent = "";
