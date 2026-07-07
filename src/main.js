@@ -9,7 +9,11 @@ import {
     resetActiveProfileStats,
     refreshActiveProfileDailyStats,
     syncActiveProfileToCloud,
-    loadActiveProfileFromCloud
+    loadActiveProfileFromCloud,
+    logDrillSession,
+    fetchFeatureFlags,
+    canAccess,
+    autoCaptureToBankIfFailed
 } from './state.js';
 import { generateQuestion, recordAttempt } from './trainer/engine.js';
 import { initializeKeypad, updateKeypadVisibility } from './trainer/keypad.js';
@@ -250,12 +254,49 @@ function applyTheme(theme) {
 // Workout Action methods
 function startWorkoutRun() {
     const workout = state.currentWorkout;
-    workout.isActive = true;
     workout.mode = elements.modeSelect.value;
+    
+    // Check feature access based on feature flags
+    if (workout.mode === "tables") {
+        const startVal = parseInt(elements.tableStart.value) || 1;
+        const endVal = parseInt(elements.tableEnd.value) || 50;
+        if (startVal > 20 || endVal > 20) {
+            if (!canAccess("tables.range_21_50")) {
+                alert("Multiplication tables between 21 and 50 is a Premium feature. Please sign in with a paid account.");
+                return;
+            }
+        }
+    } else if (workout.mode === "alphaOpposite") {
+        if (!canAccess("alpha.opposite")) {
+            alert("Alphabet Opposite Letters matching is a Premium feature. Please sign in with a paid account.");
+            return;
+        }
+    } else if (workout.mode === "custom") {
+        const customOptAlphaOpposite = document.getElementById("customOptAlphaOpposite").checked;
+        const rawTables = document.getElementById("customTablesList").value;
+        const customTables = rawTables.split(",")
+            .map(s => parseInt(s.trim()))
+            .filter(n => !isNaN(n) && n >= 1 && n <= 50);
+        
+        if (customOptAlphaOpposite && !canAccess("alpha.opposite")) {
+            alert("Opposite Letters training is a Premium feature. Please deselect it or sign in with a paid account.");
+            return;
+        }
+        
+        const hasHardTables = customTables.some(n => n > 20) || (customTables.length === 0);
+        const customOptTables = document.getElementById("customOptTables").checked;
+        if (customOptTables && hasHardTables && !canAccess("tables.range_21_50")) {
+            alert("Multiplication tables above 20 is a Premium feature. Please specify tables 1-20 or sign in with a paid account.");
+            return;
+        }
+    }
+
+    workout.isActive = true;
     workout.duration = parseInt(elements.timerSelect.value) || 60;
     workout.timeLeft = workout.duration;
     workout.correct = 0;
     workout.total = 0;
+    workout.sessionLog = []; // Reset question-by-question session log
     
     // Set custom configurations if combined training is selected
     if (workout.mode === "custom") {
@@ -355,6 +396,21 @@ function checkUserAnswer() {
     const activeMode = activeQuestionData.generatedMode || workout.mode;
     recordAttempt(activeMode, activeQuestionData, isCorrect, val, timeTaken);
     
+    // Add to session log
+    workout.sessionLog.push({
+        question: workout.currentQuestion,
+        correctAnswer: workout.currentAnswer,
+        userAnswer: val,
+        isCorrect: isCorrect,
+        timeTaken: parseFloat(timeTaken.toFixed(2)),
+        timestamp: new Date().toISOString()
+    });
+    
+    // Auto-capture failed questions to Supabase Question Bank
+    if (!isCorrect) {
+        autoCaptureToBankIfFailed(activeMode, activeQuestionData, val);
+    }
+    
     if (isCorrect) {
         workout.correct++;
         profile.all_time_correct++;
@@ -396,6 +452,19 @@ function skipQuestion() {
     const activeMode = activeQuestionData.generatedMode || workout.mode;
     recordAttempt(activeMode, activeQuestionData, false, "SKIPPED", timeTaken);
     profile.all_time_total++;
+    
+    // Add to session log
+    workout.sessionLog.push({
+        question: workout.currentQuestion,
+        correctAnswer: workout.currentAnswer,
+        userAnswer: "SKIPPED",
+        isCorrect: false,
+        timeTaken: parseFloat(timeTaken.toFixed(2)),
+        timestamp: new Date().toISOString()
+    });
+    
+    // Auto-capture skipped questions to Supabase Question Bank
+    autoCaptureToBankIfFailed(activeMode, activeQuestionData, "SKIPPED");
     
     elements.feedbackDisplay.textContent = `Skipped. Correct answer was: ${workout.currentAnswer}`;
     elements.feedbackDisplay.className = "feedback-msg skipped";
@@ -441,6 +510,16 @@ function stopWorkoutRun(interrupted = false) {
         elements.modalTotal.textContent = workout.total;
         elements.modalAccuracy.textContent = `${acc}%`;
         elements.summaryModal.style.display = "flex";
+        
+        // Log drill session to Supabase
+        const durationSec = workout.duration - workout.timeLeft;
+        const config = workout.mode === "custom" ? workout.customConfig : { tableStart: elements.tableStart.value, tableEnd: elements.tableEnd.value };
+        logDrillSession(workout.mode, durationSec, workout.correct, workout.total, workout.sessionLog, config);
+        
+        // Sync aggregate statistics to cloud
+        if (supabase && state.supabaseUser) {
+            syncActiveProfileToCloud();
+        }
     }
     
     saveStateToStorage();
@@ -858,6 +937,7 @@ function initApplication() {
     
     // Check active cloud session on startup
     if (supabase) {
+        fetchFeatureFlags(); // Load and cache feature flags on startup
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session && session.user) {
                 state.supabaseUser = session.user;
@@ -878,6 +958,7 @@ function initApplication() {
                 window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
                     detail: { status: 'synced', user: session.user }
                 }));
+                fetchFeatureFlags(); // Re-fetch features on sign in to update custom tiers
                 loadActiveProfileFromCloud().then(() => {
                     onActiveProfileChanged();
                 });

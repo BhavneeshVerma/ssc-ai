@@ -31,3 +31,6 @@ dist-ssr
 
 # Agent context files (may contain project-specific references)
 CLAUDE.md
+
+# SQL Database Schemas
+supabase_schema.sql

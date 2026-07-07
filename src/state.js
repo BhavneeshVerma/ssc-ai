@@ -9,6 +9,7 @@ export const state = {
     activeProfileId: "guest",
     supabaseUser: null,
     cloudSyncStatus: 'disconnected',
+    featureFlags: [],        // Cached feature_flags rows from Supabase
     currentWorkout: {
         isActive: false,
         mode: "alphaToNum",
@@ -21,7 +22,8 @@ export const state = {
         currentAnswer: "",
         currentLetter: null,
         currentTable: null,
-        currentMultiplier: null
+        currentMultiplier: null,
+        sessionLog: []       // Per-question log for this workout
     },
     analytics: {
         activeSubTab: "alpha"
@@ -78,14 +80,11 @@ export function loadStateFromStorage() {
 }
 
 // Save profiles to browser local storage
+// NOTE: Does NOT trigger cloud sync — sync happens only at workout end
+// to avoid 60+ API calls during a single drill session.
 export function saveStateToStorage() {
     localStorage.setItem("trainer_profiles", JSON.stringify(state.profiles));
     localStorage.setItem("trainer_active_profile", state.activeProfileId);
-    
-    // Trigger background sync if Supabase is initialized and user is logged in
-    if (supabase && state.supabaseUser) {
-        syncActiveProfileToCloud();
-    }
 }
 
 // Create a new user profile
@@ -226,7 +225,9 @@ export async function syncActiveProfileToCloud() {
                 last_active_date: profile.last_active_date || '',
                 wrong_counts: profile.wrong_counts || {},
                 table_wrong_counts: profile.table_wrong_counts || {},
-                detailed_mistakes: profile.detailed_mistakes || { tables: {}, alpha: {} }
+                detailed_mistakes: profile.detailed_mistakes || { tables: {}, alpha: {} },
+                discipline_metrics: profile.discipline_metrics || {},
+                updated_at: new Date().toISOString()
             }, { onConflict: 'user_id' });
             
         if (error) throw error;
@@ -297,4 +298,131 @@ function dispatchSyncEvent() {
     window.dispatchEvent(event);
 }
 
+// ==========================================
+// Drill Session Logging
+// ==========================================
+
+export async function logDrillSession(mode, durationSec, correct, total, sessionLog, config) {
+    if (!supabase) return;
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const accuracy = total > 0 ? parseFloat(((correct / total) * 100).toFixed(2)) : 0;
+
+    try {
+        const { error } = await supabase
+            .from('drill_sessions')
+            .insert({
+                user_id: user.id,
+                mode: mode,
+                duration_sec: durationSec,
+                correct: correct,
+                total: total,
+                accuracy: accuracy,
+                session_log: sessionLog || [],
+                config: config || {}
+            });
+        if (error) throw error;
+        console.log('Drill session logged to cloud.');
+    } catch (err) {
+        console.error('Failed to log drill session:', err);
+    }
+}
+
+// ==========================================
+// Feature Flags (Dynamic Paid/Free Gating)
+// ==========================================
+
+export async function fetchFeatureFlags() {
+    if (!supabase) return;
+
+    try {
+        const { data, error } = await supabase
+            .from('feature_flags')
+            .select('feature_key, is_free, display_name, category');
+        if (error) throw error;
+        state.featureFlags = data || [];
+        console.log(`Loaded ${state.featureFlags.length} feature flags.`);
+    } catch (err) {
+        console.error('Failed to fetch feature flags:', err);
+        state.featureFlags = [];
+    }
+}
+
+/**
+ * Check if the current user can access a feature.
+ * Returns true if:
+ *   - The feature key is unknown (unregistered features are allowed by default)
+ *   - The feature is marked is_free=true
+ *   - The user is a paid subscriber (is_paid on their profile)
+ */
+export function canAccess(featureKey) {
+    const flag = state.featureFlags.find(f => f.feature_key === featureKey);
+    if (!flag) return true;          // Unknown feature = allowed
+    if (flag.is_free) return true;   // Free for everyone
+
+    // Check if current user is paid
+    const profile = getActiveProfile();
+    if (profile && profile.is_paid) return true;
+
+    return false;
+}
+
+// ==========================================
+// Question Bank Auto-Capture
+// ==========================================
+
+export async function autoCaptureToBankIfFailed(mode, questionData, userAnswer) {
+    if (!supabase) return;
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    let discipline = 'tables';
+    let topic = 'multiplication';
+    let questionText = questionData.question;
+    let correctAnswer = questionData.answer;
+
+    if (mode !== 'tables') {
+        discipline = 'alpha';
+        topic = mode; // alphaToNum, numToAlpha, alphaOpposite
+    }
+
+    try {
+        // Check if this exact question already exists for this user
+        const { data: existing } = await supabase
+            .from('question_bank')
+            .select('id, times_shown')
+            .eq('user_id', user.id)
+            .eq('question_text', questionText)
+            .maybeSingle();
+
+        if (existing) {
+            // Increment times_shown instead of inserting a duplicate
+            await supabase
+                .from('question_bank')
+                .update({ times_shown: existing.times_shown + 1, last_shown_at: new Date().toISOString() })
+                .eq('id', existing.id);
+        } else {
+            await supabase
+                .from('question_bank')
+                .insert({
+                    user_id: user.id,
+                    source: 'auto_capture',
+                    discipline: discipline,
+                    topic: topic,
+                    question_text: questionText,
+                    correct_answer: correctAnswer,
+                    user_answer: userAnswer,
+                    drill_metadata: {
+                        mode: mode,
+                        table: questionData.currentTable || null,
+                        multiplier: questionData.currentMultiplier || null,
+                        letter: questionData.currentLetter || null
+                    }
+                });
+        }
+    } catch (err) {
+        console.error('Auto-capture to question bank failed:', err);
+    }
+}
 
