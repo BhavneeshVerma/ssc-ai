@@ -1,0 +1,79 @@
+/* =====================================================
+   PROFILES, ACCOUNTS & SYNC STYLES
+   ===================================================== */
+.profiles-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.profiles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.profile-card {
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: all 0.1s ease;
+}
+
+.profile-card.active-profile {
+    border-color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 8%, var(--bg-input));
+}
+
+.profile-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.profile-card-stats { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); }
+
+.profile-card-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.cloud-card { border-color: var(--primary); }
+
+.cloud-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+
+.cloud-icon { font-size: 24px; color: var(--primary); flex-shrink: 0; }
+
+.cloud-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-text);
+    background: var(--primary);
+    padding: 4px 10px;
+    margin-bottom: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    border: 1px solid var(--border);
+}
+
+.cloud-badge.success { background: var(--success); color: #FFFFFF; }
+.cloud-badge.warning { background: var(--warning); color: #111111; }
+.cloud-badge.danger { background: var(--danger); color: #FFFFFF; }
+.cloud-badge.active { background: var(--text-main); color: var(--bg-panel); }
+
+.spin {
+    animation: fa-spin 1.5s infinite linear;
+}
+
+.cloud-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }

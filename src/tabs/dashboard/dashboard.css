@@ -1,0 +1,195 @@
+/* =====================================================
+   DASHBOARD SCORING & SUMMARY STYLE PANEL
+   ===================================================== */
+.dashboard-greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.greeting-text h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.greeting-text p { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+.greeting-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    padding: 8px 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.dash-stat-card {
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.12s ease;
+    cursor: default;
+}
+
+.dash-stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.dash-stat-card:hover {
+    box-shadow: var(--shadow);
+    transform: translate(-1px, -1px);
+}
+
+.dash-stat-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.dash-stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.dash-stat-value.accent { color: var(--primary); }
+
+.dash-stat-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.dashboard-zones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.zone-card {
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    padding: 18px 20px;
+}
+
+.zone-card.zone-strong { border-left: 4px solid var(--success); }
+.zone-card.zone-weak   { border-left: 4px solid var(--danger); }
+
+.zone-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zone-title.strong { color: var(--success); }
+.zone-title.weak   { color: var(--danger); }
+
+.zone-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+.zone-item {
+    font-size: 12px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.zone-item:last-child { border-bottom: none; }
+
+.zone-item::before {
+    content: '›';
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.zone-empty {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 8px 0;
+    font-style: italic;
+}
+
+.dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.dash-action-btn {
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    color: var(--text-main);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+}
+
+.dash-action-btn:hover {
+    background: var(--primary);
+    color: var(--primary-text);
+    box-shadow: var(--shadow);
+    transform: translate(-1px, -1px);
+}
+
+.dash-action-btn:active { transform: translate(1px, 1px); box-shadow: none; }
+
+.dash-action-btn i { font-size: 14px; flex-shrink: 0; }
+
+.dash-action-btn .action-arrow {
+    margin-left: auto;
+    font-size: 16px;
+    font-family: 'JetBrains Mono', monospace;
+}

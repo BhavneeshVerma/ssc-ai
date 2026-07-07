@@ -1,0 +1,437 @@
+/* =====================================================
+   LEARNING HUB TABS & REFERENCES
+   ===================================================== */
+.learning-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.l-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-bottom: -2px;
+}
+
+.l-tab-btn:hover { color: var(--text-main); }
+
+.l-tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.learning-panel { display: none; }
+.learning-panel.active { display: block; }
+
+/* Font Controls */
+.font-controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+    padding: 8px 14px;
+    flex-wrap: wrap;
+}
+
+.font-ctrl-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-size-btns { display: flex; gap: 3px; }
+
+.font-sz-btn {
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 0;
+}
+
+.font-sz-btn:hover { color: var(--text-main); border-color: var(--text-muted); }
+
+.font-sz-btn.active {
+    background: var(--primary);
+    color: var(--primary-text);
+    border-color: var(--border);
+}
+
+.font-face-select {
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    color: var(--text-main);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 10px;
+    outline: none;
+    width: auto;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.font-face-select:focus { border-color: var(--primary); }
+
+/* Apply hub font vars */
+#tab-learning .panel-title,
+#tab-learning .panel-description,
+#tab-learning .mnemonic-card-content,
+#tab-learning .table-row-item,
+#tab-learning .opposite-word,
+#tab-learning .shortcuts-table,
+#tab-learning .az-num,
+#tab-learning .zone-item {
+    font-family: var(--hub-font-family);
+    font-size: var(--hub-font-size);
+}
+
+#tab-learning .az-letter { font-family: 'Space Grotesk', sans-serif; font-size: calc(var(--hub-font-size) * 1.2); }
+#tab-learning .mnemonic-letter { font-family: 'Space Grotesk', sans-serif; font-size: calc(var(--hub-font-size) * 1.5); }
+#tab-learning .table-row-item { font-size: calc(var(--hub-font-size) * 1.05); }
+#tab-learning .opposite-letters span { font-size: calc(var(--hub-font-size) * 1.6); }
+
+/* Tables Grid */
+.tables-control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.tables-grid-container { overflow-y: auto; max-height: 360px; }
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.table-cell-card {
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 10px 4px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-main);
+    transition: all 0.1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.table-cell-card span {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.table-cell-card:hover {
+    border-color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 10%, var(--bg-input));
+    color: var(--primary);
+    box-shadow: var(--shadow);
+    transform: translate(-1px, -1px);
+}
+
+.table-cell-card.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-text);
+    box-shadow: var(--shadow);
+}
+
+.table-cell-card.active span { color: var(--primary-text); opacity: 0.7; }
+
+/* Heatmap States */
+.heatmap-green { border-color: var(--success) !important; background: color-mix(in srgb, var(--success) 16%, var(--bg-input)) !important; color: var(--success) !important; }
+.heatmap-yellow { border-color: var(--warning) !important; background: color-mix(in srgb, var(--warning) 16%, var(--bg-input)) !important; color: var(--warning) !important; }
+.heatmap-red { border-color: var(--danger) !important; background: color-mix(in srgb, var(--danger) 16%, var(--bg-input)) !important; color: var(--danger) !important; }
+
+/* Table Detail Panel */
+.table-details-panel { display: flex; flex-direction: column; overflow: hidden; }
+
+.table-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+}
+
+.table-details-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.table-rows-list {
+    overflow-y: auto;
+    max-height: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.table-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: var(--bg-input);
+    border: 2px solid transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.08s ease;
+}
+
+.table-row-item.row-green { border-color: var(--success); background: color-mix(in srgb, var(--success) 10%, var(--bg-input)); color: var(--success); }
+.table-row-item.row-yellow { border-color: var(--warning); background: color-mix(in srgb, var(--warning) 10%, var(--bg-input)); color: var(--warning); }
+.table-row-item.row-red { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--bg-input)); color: var(--danger); }
+
+.table-row-item .row-meta { font-size: 11px; color: var(--text-muted); }
+
+/* Heatmap Toggle */
+.heatmap-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    user-select: none;
+    transition: color 0.12s ease;
+}
+
+.heatmap-toggle-wrapper.active { color: var(--primary); }
+
+.toggle-switch {
+    width: 36px;
+    height: 20px;
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    flex-shrink: 0;
+    border-radius: 0;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background: var(--text-muted);
+    transition: all 0.15s ease;
+}
+
+.heatmap-toggle-wrapper.active .toggle-switch {
+    background: var(--primary);
+    border-color: var(--border);
+}
+
+.heatmap-toggle-wrapper.active .toggle-switch::after {
+    left: calc(100% - 14px);
+    background: var(--primary-text);
+}
+
+/* =====================================================
+   MNEMONICS & SHORTCUT CARDS
+   ===================================================== */
+.mnemonic-card {
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.mnemonic-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.mnemonic-card-content {
+    font-size: 13px;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.mnemonic-table-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.mnemonic-table-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-panel);
+    border: 2px solid var(--border-soft);
+    padding: 10px 4px;
+    transition: all 0.1s ease;
+}
+
+.mnemonic-table-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.mnemonic-letter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.mnemonic-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+/* Opposite Letters */
+.opposite-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+}
+
+.opposite-pair-card {
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.1s ease;
+}
+
+.opposite-pair-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+    transform: translate(-1px, -1px);
+}
+
+.opposite-letters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.opposite-letters span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.opposite-letters::after {
+    content: '↔';
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.opposite-word {
+    font-size: 12px;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.opposite-word strong { color: var(--primary); }
+
+/* A-Z Grid */
+.az-position-grid {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 5px;
+    margin-top: 14px;
+}
+
+.az-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 8px 3px;
+    gap: 3px;
+    transition: all 0.1s ease;
+}
+
+.az-cell:hover { border-color: var(--text-muted); transform: scale(1.06); }
+
+.az-cell.az-ejoty {
+    background: color-mix(in srgb, var(--primary) 14%, var(--bg-input));
+    border-color: var(--primary);
+    box-shadow: 2px 2px 0 var(--primary);
+}
+
+.az-cell.az-ejoty .az-letter { color: var(--primary); }
+
+.az-letter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text-main);
+}
+
+.az-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+}

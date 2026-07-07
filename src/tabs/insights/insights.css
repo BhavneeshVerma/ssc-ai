@@ -1,0 +1,167 @@
+/* =====================================================
+   INSIGHTS & QUESTION BANK STYLES
+   ===================================================== */
+.sidebar-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.mistake-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 12px;
+}
+
+.m-tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-bottom: -2px;
+}
+
+.m-tab-btn:hover { color: var(--text-main); }
+.m-tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+.mistakes-container {
+    overflow-y: auto;
+    max-height: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Detailed Mistake Card styles */
+.detailed-mistake-card {
+    background: var(--bg-input);
+    border: 2px solid var(--border-soft);
+    padding: 12px;
+    transition: border-color 0.1s ease;
+}
+
+.detailed-mistake-card:hover { border-color: var(--danger); }
+
+.detailed-mistake-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detailed-mistake-eqn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--danger);
+}
+
+.mistake-count {
+    font-size: 10px;
+    background: color-mix(in srgb, var(--danger) 14%, var(--bg-panel));
+    color: var(--danger);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.detailed-mistake-ratio {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.detailed-mistake-history {
+    margin-top: 8px;
+    border-top: 1px dashed var(--border);
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.detailed-mistake-guess {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.detailed-mistake-guess span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chart-panel { display: flex; flex-direction: column; }
+
+.chart-wrapper { flex: 1; min-height: 280px; position: relative; }
+
+.scroll-table-box { overflow-y: auto; max-height: 350px; border: 2px solid var(--border); }
+
+.shortcuts-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+.shortcuts-table th {
+    background: var(--bg-input);
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: 'Space Grotesk', sans-serif;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.shortcuts-table td {
+    padding: 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text-main);
+}
+
+.shortcuts-table tr:hover td {
+    background: color-mix(in srgb, var(--primary) 8%, var(--bg-panel));
+    color: var(--primary);
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 28px 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.04em;
+    border: 2px dashed var(--border-soft);
+}
+
+.text-danger { color: var(--danger); }
+.text-green-400 { color: var(--success); }
+.text-yellow-400 { color: var(--warning); }
+
+/* QBank tab styling */
+.qbank-adder-card {
+    background: var(--bg-panel);
+}
+
+.qbank-list-card {
+    background: var(--bg-panel);
+}
+
+.qbank-list-container {
+    border-radius: 4px;
+}
