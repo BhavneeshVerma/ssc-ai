@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm-glass">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSC AI Theme Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800;900&family=Fraunces:opsz,wght@9..144,400;700;900&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/themes/theme-system.css" />
+  <style>
+    *{box-sizing:border-box} body{margin:0}.shell{min-height:100vh;padding:24px;display:grid;grid-template-columns:280px 1fr;gap:22px}.sidebar{min-height:calc(100vh - 48px);display:flex;flex-direction:column;gap:18px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:46px;height:46px;border-radius:18px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-weight:950}.brand-title{font-family:var(--font-heading);font-size:24px;font-weight:950;letter-spacing:-.06em}.brand-sub{color:var(--muted);font-family:var(--font-mono);font-size:11px;text-transform:uppercase;font-weight:800}.nav{display:grid;gap:8px}.nav button{text-align:left;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--muted);font-weight:900;padding:13px 14px}.nav button.active{background:var(--ink);color:var(--bg)}.main{display:grid;gap:20px;align-content:start}.topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}h1{margin:0;font-family:var(--font-heading);font-size:clamp(42px,6vw,92px);line-height:.9;letter-spacing:-.08em}.eyebrow{font-family:var(--font-mono);color:var(--accent);font-weight:900;letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px}.muted{color:var(--muted);line-height:1.55;font-weight:700}.grid{display:grid;gap:18px}.dashboard-grid{grid-template-columns:1.1fr .9fr}.stats{grid-template-columns:repeat(4,1fr)}.stat h2{font-size:42px;margin:8px 0 4px;font-family:var(--font-heading);letter-spacing:-.06em}.stat small{color:var(--muted);font-weight:800}.mission{min-height:320px;display:flex;flex-direction:column;justify-content:space-between}.mission h2{font-family:var(--font-heading);font-size:46px;line-height:.98;letter-spacing:-.07em;margin:0}.mission-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tile{border-radius:var(--radius-md);padding:16px;border:1px solid var(--glass-border);background:var(--glass-bg-subtle)}.tile strong{display:block;font-family:var(--font-heading);font-size:28px;letter-spacing:-.04em}.list{display:grid;gap:10px}.item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px;border-radius:var(--radius-md);background:var(--glass-bg-subtle);border:1px solid var(--glass-border)}.badge{min-width:48px;height:48px;padding:0 10px;border-radius:18px;display:grid;place-items:center;background:var(--accent);color:white;font-weight:950}.item-title{font-weight:950}.controls{display:grid;gap:14px}.theme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.theme-chip{cursor:pointer;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--glass-bg-subtle);color:var(--ink);font-weight:900;padding:12px}label{display:block;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:900;text-transform:uppercase;margin-bottom:7px}@media(max-width:1100px){.shell,.dashboard-grid{grid-template-columns:1fr}.sidebar{min-height:0}.stats,.mission-row{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.shell{padding:14px}.stats,.mission-row,.theme-grid{grid-template-columns:1fr}.topbar{flex-direction:column}}
+  </style>
+</head>
+<body class="app-theme-bg">
+  <div class="shell">
+    <aside class="sidebar glass-sidebar">
+      <div class="brand"><div class="brand-mark">S</div><div><div class="brand-title">SSC AI</div><div class="brand-sub">theme playground</div></div></div>
+      <nav class="nav"><button class="active">Dashboard</button><button>Practice</button><button>Mistakes</button><button>Learn</button><button>Mock Exam</button><button>Account</button></nav>
+      <div class="glass-card glass-subtle" style="margin-top:auto;box-shadow:none"><div class="eyebrow">Principle</div><div class="muted">Theme changes alter mood, not the learning loop.</div></div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><div><div class="eyebrow">Command Center</div><h1>Dashboard</h1><p class="muted">Glass dashboard using theme variables for background, accent, typography, and surface style.</p></div><button class="theme-button-primary">Start Weakness Drill</button></div>
+      <div class="grid dashboard-grid">
+        <section class="glass-card mission"><div><div class="eyebrow">Today’s Mission</div><h2>Attack 23 weak recall items before new learning.</h2><p class="muted">Tables 17-19, fraction percentages, and alphabet opposites are highest-return today.</p></div><div class="mission-row"><div class="tile"><strong>10m</strong><span class="muted">Tables</span></div><div class="tile"><strong>8m</strong><span class="muted">Fractions</span></div><div class="tile"><strong>6m</strong><span class="muted">Opposites</span></div><div class="tile"><strong>12</strong><span class="muted">Retests</span></div></div></section>
+        <section class="glass-card glass-strong controls"><div><div class="eyebrow">Theme Controls</div><h2 class="theme-heading" style="font-size:32px;margin:0 0 10px">Switch mood instantly</h2><p class="muted">This can later live inside Account / Appearance.</p></div><div class="theme-grid"><button class="theme-chip" data-theme-btn="warm-glass">Warm Glass</button><button class="theme-chip" data-theme-btn="rose-editorial">Rose Editorial</button><button class="theme-chip" data-theme-btn="noir-serif">Noir Serif</button><button class="theme-chip" data-theme-btn="focus-dark">Focus Dark</button><button class="theme-chip" data-theme-btn="high-contrast">High Contrast</button></div><div><label>Accent color</label><input class="theme-input" id="accentInput" type="color" value="#b88338" /></div></section>
+      </div>
+      <div class="grid stats"><div class="glass-card stat"><small>Recall Accuracy</small><h2>84%</h2><div class="muted">+9% this week</div></div><div class="glass-card stat"><small>Avg Speed</small><h2>1.8s</h2><div class="muted">Target under 1.5s</div></div><div class="glass-card stat"><small>Weak Items</small><h2>23</h2><div class="muted">Need review</div></div><div class="glass-card stat"><small>Streak</small><h2>04</h2><div class="muted">Active days</div></div></div>
+      <section class="glass-card"><div class="eyebrow">Danger Zone</div><div class="list"><div class="item"><div class="badge">17x8</div><div><div class="item-title">Slow and wrong twice</div><div class="muted">Expected 136, avg 3.2s</div></div><button class="theme-button-secondary">Drill</button></div><div class="item"><div class="badge">7/8</div><div><div class="item-title">Fraction to percentage</div><div class="muted">Expected 87.5%</div></div><button class="theme-button-secondary">Drill</button></div></div></section>
+    </main>
+  </div>
+  <script>
+    const root=document.documentElement;
+    document.querySelectorAll('[data-theme-btn]').forEach(btn=>btn.addEventListener('click',()=>root.setAttribute('data-theme',btn.dataset.themeBtn)));
+    document.getElementById('accentInput').addEventListener('input',e=>root.style.setProperty('--accent',e.target.value));
+  </script>
+</body>
+</html>
