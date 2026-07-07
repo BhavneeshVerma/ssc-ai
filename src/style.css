@@ -1789,7 +1789,7 @@ body.workout-running .input-area {
         display: flex;
         flex-direction: column;
     }
-    body.workout-running .tab-content {
+    body.workout-running .tab-content.active {
         height: 100%;
         display: flex;
         flex-direction: column;
