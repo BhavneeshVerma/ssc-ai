@@ -18,6 +18,7 @@ let activeQuestionData = {};
 
 function getElements() {
     return {
+        setupForm: document.getElementById("setupForm"),
         modeSelect: document.getElementById("modeSelect"),
         tablesConfig: document.getElementById("tablesConfig"),
         presetBtns: document.querySelectorAll(".preset-btn"),
@@ -148,12 +149,9 @@ export function promptNextQuestion() {
     if (el.promptHint) el.promptHint.textContent = activeQuestionData.hint;
     if (el.promptQuestion) el.promptQuestion.textContent = activeQuestionData.question;
     
-    // Update virtual keypad dynamically in custom run
-    if (workout.mode === "custom") {
-        updateKeypadVisibility(activeQuestionData.generatedMode);
-    } else {
-        updateKeypadVisibility(workout.mode);
-    }
+    // Update virtual keypad dynamically based on the active question's details
+    const activeMode = activeQuestionData.generatedMode || workout.mode;
+    updateKeypadVisibility(activeMode, activeQuestionData.answer);
     
     currentQuestionStartTime = Date.now();
     el.answerInput.focus({ preventScroll: true });

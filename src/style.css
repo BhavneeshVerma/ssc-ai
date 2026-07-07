@@ -7,6 +7,9 @@
 
 /* ROOT FALLBACK (Dark Void, matches theme-dark) */
 :root {
+    --font-sans:     'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono:     'JetBrains Mono', monospace;
+    --font-display:  'Space Grotesk', sans-serif;
     --bg-dark:     #0D0D0D;
     --bg-panel:    #161616;
     --bg-input:    #202020;
@@ -31,7 +34,7 @@
     --chart-accent:  #C6FF00;
     --accent-glow:   rgba(198,255,0,0.15);
     --hub-font-size: 14px;
-    --hub-font-family: 'DM Sans', sans-serif;
+    --hub-font-family: var(--font-sans);
     --safe-area-top: env(safe-area-inset-top, 0px);
     --safe-area-bottom: env(safe-area-inset-bottom, 0px);
     --safe-area-left: env(safe-area-inset-left, 0px);
@@ -45,7 +48,7 @@
 html { font-size: 16px; }
 
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans);
     background: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.5;
@@ -162,7 +165,7 @@ body {
 }
 
 .profile-avatar .avatar-initials {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0;
@@ -193,7 +196,7 @@ body {
 .profile-info { min-width: 0; }
 
 .profile-name {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 700;
     color: var(--sidebar-text);
@@ -227,7 +230,7 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
 }
 
 .theme-btn-grid {
@@ -275,7 +278,7 @@ body {
     border: none;
     border-left: 3px solid transparent;
     color: var(--sidebar-muted);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -340,7 +343,7 @@ body {
 }
 
 .tab-header h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 30px;
     font-weight: 800;
     color: var(--text-main);
@@ -370,7 +373,7 @@ body {
 }
 
 .panel-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -600,7 +603,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); }
     border: 2px solid var(--border);
     border-bottom: 4px solid var(--border);
     color: var(--text-main);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 700;
     padding: 0;
@@ -616,11 +619,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); }
     touch-action: manipulation;
 }
 
-.key-btn:hover {
-    background: var(--primary);
-    border-color: var(--border);
-    border-bottom-color: var(--border);
-    color: var(--primary-text);
+@media (hover: hover) {
+    .key-btn:hover {
+        background: var(--primary);
+        border-color: var(--border);
+        border-bottom-color: var(--border);
+        color: var(--primary-text);
+    }
 }
 
 .key-btn:active, .key-btn.active {
@@ -635,7 +640,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 .key-btn[data-key="enter"] {
     flex: 1.5;
     font-size: 12px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     text-transform: uppercase;
 }
 
@@ -687,7 +692,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 .modal-icon { font-size: 48px; color: var(--primary); margin-bottom: 16px; }
 
 .modal-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 26px;
     font-weight: 800;
     color: var(--text-main);
@@ -967,6 +972,17 @@ input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 /* =====================================================
    WORKOUT ACTIVE LAYOUT OPTIMIZATION (MOBILE & GENERAL)
    ===================================================== */
+#tab-training .grid-layout {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#tab-training .panel-keypad {
+    display: none !important;
+}
+
 body.workout-running {
     height: 100dvh !important;
     overflow: hidden !important;
@@ -986,7 +1002,24 @@ body.workout-running .input-area {
     overflow: hidden !important;
 }
 
-/* Hide tab header, header and bottom dock during workout on mobile to save space */
+body.workout-running #tab-training .grid-layout {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 16px;
+}
+
+body.workout-running #tab-training .panel-keypad {
+    display: block !important;
+}
+
+body.workout-running .panel-keypad .panel-title,
+body.workout-running .panel-keypad .panel-description {
+    display: none !important;
+}
+
+/* Mobile specific active workout layout */
 @media (max-width: 768px) {
     body.workout-running .app-mobile-header,
     body.workout-running .app-bottom-dock {
@@ -997,7 +1030,7 @@ body.workout-running .input-area {
         padding-bottom: 0 !important;
     }
     body.workout-running .app-main {
-        padding: 8px 8px 16px 8px !important;
+        padding: 10px 10px 16px 10px !important;
         height: 100dvh !important;
         overflow: hidden !important;
         display: flex;
@@ -1015,7 +1048,7 @@ body.workout-running .input-area {
     body.workout-running .grid-layout {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
         flex: 1;
         justify-content: space-between;
         height: 100%;
@@ -1037,71 +1070,72 @@ body.workout-running .input-area {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 8px;
+        gap: 10px;
     }
     body.workout-running .prompt-card {
         border: 2px solid var(--border) !important;
         background: var(--bg-panel) !important;
-        padding: 16px 12px !important;
+        padding: 20px 14px !important;
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-top: 5px;
-        min-height: 140px;
-        max-height: 220px;
+        min-height: 150px;
+        max-height: 230px;
     }
     body.workout-running .panel-keypad {
         margin-top: auto;
         padding-bottom: 8px !important;
         width: 100%;
     }
-    body.workout-running .panel-keypad .panel-title,
-    body.workout-running .panel-keypad .panel-description {
-        display: none !important;
-    }
     body.workout-running .keypad-grid {
-        gap: 6px;
-        max-width: 290px;
+        gap: 8px;
+        max-width: 320px;
     }
     body.workout-running .keypad-grid-alpha {
-        gap: 6px;
-        max-width: 480px;
+        gap: 8px;
+        max-width: 520px;
     }
     body.workout-running .keyboard-row {
-        gap: 5px;
+        gap: 6px;
     }
     body.workout-running .key-btn {
-        height: 44px;
-        font-size: 14px;
+        height: 48px;
+        font-size: 16px;
         border-radius: 6px;
     }
+    body.workout-running .key-btn[data-key="backspace"],
+    body.workout-running .key-btn[data-key="enter"] {
+        font-size: 12px;
+    }
     body.workout-running .prompt-text {
-        font-size: 56px;
+        font-size: 64px;
         line-height: 1.1;
     }
     body.workout-running .prompt-hint {
-        margin-bottom: 8px;
-    }
-    body.workout-running .visual-answer-container {
-        margin-top: 10px;
-        min-height: 40px;
-        max-width: 260px;
-        font-size: 20px;
-    }
-    body.workout-running .visual-answer-caret {
-        height: 20px;
-    }
-    body.workout-running .feedback-msg {
-        padding: 6px 12px;
-        min-height: 36px;
+        margin-bottom: 10px;
         font-size: 11px;
     }
+    body.workout-running .visual-answer-container {
+        margin-top: 12px;
+        min-height: 46px;
+        max-width: 280px;
+        font-size: 22px;
+    }
+    body.workout-running .visual-answer-caret {
+        height: 22px;
+    }
+    body.workout-running .feedback-msg {
+        padding: 8px 14px;
+        min-height: 38px;
+        font-size: 12px;
+    }
     body.workout-running .workout-actions {
-        gap: 8px;
+        gap: 10px;
     }
     body.workout-running .btn {
-        padding: 8px 16px;
-        font-size: 10px;
+        padding: 10px 20px;
+        font-size: 11px;
     }
 }

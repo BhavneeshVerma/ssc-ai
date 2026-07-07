@@ -35,7 +35,7 @@
 }
 
 .profile-card-name {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 700;
     color: var(--text-main);

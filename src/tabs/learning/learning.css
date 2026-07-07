@@ -12,7 +12,7 @@
     border: none;
     border-bottom: 3px solid transparent;
     color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
 }
 
 .font-size-btns { display: flex; gap: 3px; }
@@ -65,7 +65,7 @@
     color: var(--text-muted);
     font-size: 10px;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     letter-spacing: 0.06em;
     padding: 4px 10px;
     cursor: pointer;
@@ -85,7 +85,7 @@
     background: var(--bg-input);
     border: 2px solid var(--border);
     color: var(--text-main);
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
     padding: 5px 10px;
     outline: none;
@@ -109,8 +109,8 @@
     font-size: var(--hub-font-size);
 }
 
-#tab-learning .az-letter { font-family: 'Space Grotesk', sans-serif; font-size: calc(var(--hub-font-size) * 1.2); }
-#tab-learning .mnemonic-letter { font-family: 'Space Grotesk', sans-serif; font-size: calc(var(--hub-font-size) * 1.5); }
+#tab-learning .az-letter { font-family: var(--font-sans); font-size: calc(var(--hub-font-size) * 1.2); }
+#tab-learning .mnemonic-letter { font-family: var(--font-sans); font-size: calc(var(--hub-font-size) * 1.5); }
 #tab-learning .table-row-item { font-size: calc(var(--hub-font-size) * 1.05); }
 #tab-learning .opposite-letters span { font-size: calc(var(--hub-font-size) * 1.6); }
 
@@ -136,7 +136,7 @@
     padding: 10px 4px;
     text-align: center;
     cursor: pointer;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 15px;
     font-weight: 800;
     color: var(--text-main);
@@ -190,7 +190,7 @@
 }
 
 .table-details-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 20px;
     font-weight: 800;
     color: var(--primary);
@@ -233,7 +233,7 @@
     cursor: pointer;
     font-size: 10px;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -287,7 +287,7 @@
 }
 
 .mnemonic-card h4 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -329,7 +329,7 @@
 }
 
 .mnemonic-letter {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 24px;
     font-weight: 800;
     color: var(--primary);
@@ -374,7 +374,7 @@
 }
 
 .opposite-letters span {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 22px;
     font-weight: 800;
     color: var(--primary);
@@ -426,7 +426,7 @@
 .az-cell.az-ejoty .az-letter { color: var(--primary); }
 
 .az-letter {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 15px;
     font-weight: 800;
     line-height: 1;

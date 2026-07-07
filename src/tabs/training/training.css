@@ -73,12 +73,12 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     margin-bottom: 14px;
 }
 
 .prompt-text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 84px;
     font-weight: 800;
     color: var(--text-main);
@@ -99,7 +99,7 @@
 }
 
 .feedback-msg {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -166,7 +166,7 @@
     color: var(--text-muted);
     font-size: 12px;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-sans);
     pointer-events: none;
     position: absolute;
     transition: opacity 0.15s ease;
