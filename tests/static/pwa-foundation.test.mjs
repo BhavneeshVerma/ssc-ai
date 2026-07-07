@@ -142,6 +142,7 @@ test('profile tab owns theme selection controls', () => {
 });
 
 test('learning tab has mobile-safe readable layouts', () => {
+  const html = readText('index.html');
   const css = readText('src/tabs/learning/learning.css');
 
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.learning-tabs/);
@@ -149,6 +150,7 @@ test('learning tab has mobile-safe readable layouts', () => {
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.az-position-grid/);
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/);
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.mnemonic-table-list/);
+  assert.doesNotMatch(html, /class=["'][^"']*mnemonic-table-list[^"']*["'][^>]*style=["'][^"']*grid-template-columns/);
 });
 
 test('insights separates analytics and question bank on mobile', () => {
@@ -161,6 +163,7 @@ test('insights separates analytics and question bank on mobile', () => {
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.insights-tab-bar/);
   assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.qbank-list-container/);
   assert.doesNotMatch(js, /style\.display\s*=\s*activeInsightsSubTab === "analytics" \? "block" : "grid"/);
+  assert.doesNotMatch(html, /id=["']i-panel-qbank["'][^>]*style=["'][^"']*display:\s*none/);
 });
 
 test('profile cloud sync exposes Google OAuth sign-in', () => {

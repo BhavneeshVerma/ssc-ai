@@ -308,6 +308,10 @@
     gap: 8px;
 }
 
+.mnemonic-table-list.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .mnemonic-table-item {
     display: flex;
     flex-direction: column;
