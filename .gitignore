@@ -28,3 +28,6 @@ dist-ssr
 .env.local
 .env.*
 !.env.example
+
+# Agent context files (may contain project-specific references)
+CLAUDE.md
