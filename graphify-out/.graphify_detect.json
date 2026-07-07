@@ -1,0 +1,35 @@
+{
+  "files": {
+    "code": [
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\vite.config.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\python-desktop-app\\alphabet_trainer.py",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\counter.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\state.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\analytics\\chart.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\analytics\\dashboard.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\profiles\\manager.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\trainer\\engine.js",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\trainer\\keypad.js"
+    ],
+    "document": [
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\README.md",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\python-desktop-app\\trainer_stats.txt"
+    ],
+    "paper": [],
+    "image": [
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\public\\favicon.svg",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\public\\icons.svg",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\assets\\hero.png",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\assets\\javascript.svg",
+      "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\assets\\vite.svg"
+    ],
+    "video": []
+  },
+  "total_files": 17,
+  "total_words": 9358,
+  "needs_graph": false,
+  "warning": "Corpus is ~9,358 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "graphifyignore_patterns": 0
+}

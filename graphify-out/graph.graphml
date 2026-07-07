@@ -1,0 +1,1840 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d11" for="edge" attr.name="_tgt" attr.type="string" />
+  <key id="d10" for="edge" attr.name="_src" attr.type="string" />
+  <key id="d9" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d8" for="edge" attr.name="source_location" attr.type="string" />
+  <key id="d7" for="edge" attr.name="source_file" attr.type="string" />
+  <key id="d6" for="edge" attr.name="confidence" attr.type="string" />
+  <key id="d5" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d4" for="node" attr.name="community" attr.type="long" />
+  <key id="d3" for="node" attr.name="source_location" attr.type="string" />
+  <key id="d2" for="node" attr.name="source_file" attr.type="string" />
+  <key id="d1" for="node" attr.name="file_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="label" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_vite_config_js">
+      <data key="d0">vite.config.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\vite.config.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">15</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_python_desktop_app_alphabet_trainer_py">
+      <data key="d0">alphabet_trainer.py</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L1</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer">
+      <data key="d0">AdvancedAlphabetTrainer</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L12</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_init">
+      <data key="d0">.__init__()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L13</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_load_persistent_stats">
+      <data key="d0">.load_persistent_stats()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L63</data>
+      <data key="d4">7</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_reset_factory_stats">
+      <data key="d0">.reset_factory_stats()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L86</data>
+      <data key="d4">7</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_save_persistent_stats">
+      <data key="d0">.save_persistent_stats()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L93</data>
+      <data key="d4">7</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_setup_layout">
+      <data key="d0">.setup_layout()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L107</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text">
+      <data key="d0">.update_persistent_scoreboard_text()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L216</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_reset_session">
+      <data key="d0">.reset_session()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L223</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_start_timer_session">
+      <data key="d0">.start_timer_session()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L227</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_tick_timer">
+      <data key="d0">.tick_timer()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L260</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d0">.end_timer_session()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L273</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt">
+      <data key="d0">.trigger_next_prompt()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L304</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d0">.evaluate_user_answer()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L354</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_skip_question">
+      <data key="d0">.skip_question()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L393</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_update_weak_areas_display">
+      <data key="d0">.update_weak_areas_display()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L418</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_draw_performance_graph">
+      <data key="d0">.draw_performance_graph()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L454</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d0">.refresh_analytics_view()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L536</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_advancedalphabettrainer_wipe_history_data">
+      <data key="d0">.wipe_history_data()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L541</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_rationale_64">
+      <data key="d0">Loads historical progress from a local JSON text file.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L64</data>
+      <data key="d4">7</data>
+    </node>
+    <node id="alphabet_trainer_rationale_94">
+      <data key="d0">Saves historical progress to a local JSON text file permanently.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L94</data>
+      <data key="d4">7</data>
+    </node>
+    <node id="alphabet_trainer_rationale_228">
+      <data key="d0">Starts a new countdown training session.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L228</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_rationale_261">
+      <data key="d0">Timer countdown loop.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L261</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_rationale_274">
+      <data key="d0">Wraps up the active session and saves stats.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L274</data>
+      <data key="d4">4</data>
+    </node>
+    <node id="alphabet_trainer_rationale_305">
+      <data key="d0">Generates the next question, biasing toward letters/tables with high mistake cou</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L305</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_rationale_355">
+      <data key="d0">Checks the user's answer and updates scoreboard and feed feedback.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L355</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_rationale_394">
+      <data key="d0">Skips the current question, marking it as incorrect to train weak areas.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L394</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="alphabet_trainer_rationale_419">
+      <data key="d0">Displays top critical mistakes in the sidebar text widget.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L419</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_rationale_455">
+      <data key="d0">Plots the mistake count in a matplotlib chart based on current mode.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L455</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_rationale_537">
+      <data key="d0">Updates analytics display when tab is focused.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L537</data>
+      <data key="d4">0</data>
+    </node>
+    <node id="alphabet_trainer_rationale_542">
+      <data key="d0">Prompts to reset all permanent stats history.</data>
+      <data key="d1">rationale</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d3">L542</data>
+      <data key="d4">2</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_counter_js">
+      <data key="d0">counter.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\counter.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">12</data>
+    </node>
+    <node id="counter_setupcounter">
+      <data key="d0">setupCounter()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\counter.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">12</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js">
+      <data key="d0">main.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_mapelements">
+      <data key="d0">mapElements()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L23</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_setupnavigation">
+      <data key="d0">setupNavigation()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L71</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_updateprofilecardwidget">
+      <data key="d0">updateProfileCardWidget()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L104</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_onactiveprofilechanged">
+      <data key="d0">onActiveProfileChanged()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L119</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_setupworkoutconfig">
+      <data key="d0">setupWorkoutConfig()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L130</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_setupthemeswitcher">
+      <data key="d0">setupThemeSwitcher()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L204</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_applytheme">
+      <data key="d0">applyTheme()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L219</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_startworkoutrun">
+      <data key="d0">startWorkoutRun()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L243</data>
+      <data key="d4">13</data>
+    </node>
+    <node id="main_ticktimertext">
+      <data key="d0">tickTimerText()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L293</data>
+      <data key="d4">13</data>
+    </node>
+    <node id="main_promptnextquestion">
+      <data key="d0">promptNextQuestion()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L301</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_checkuseranswer">
+      <data key="d0">checkUserAnswer()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L333</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_skipquestion">
+      <data key="d0">skipQuestion()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L380</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_endworkoutrun">
+      <data key="d0">endWorkoutRun()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L411</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_stopworkoutrun">
+      <data key="d0">stopWorkoutRun()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L415</data>
+      <data key="d4">5</data>
+    </node>
+    <node id="main_setuplearninghub">
+      <data key="d0">setupLearningHub()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L443</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_rendertablesgrid">
+      <data key="d0">renderTablesGrid()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L544</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_gettableheatmapstatus">
+      <data key="d0">getTableHeatmapStatus()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L577</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_rendertabledetails">
+      <data key="d0">renderTableDetails()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L610</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_buildsquarestable">
+      <data key="d0">buildSquaresTable()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L659</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_buildcubestable">
+      <data key="d0">buildCubesTable()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L678</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_renderlearninghubstate">
+      <data key="d0">renderLearningHubState()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L696</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_renderdashboardview">
+      <data key="d0">renderDashboardView()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L708</data>
+      <data key="d4">6</data>
+    </node>
+    <node id="main_initapplication">
+      <data key="d0">initApplication()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L840</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="main_safeinit">
+      <data key="d0">safeInit()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d3">L945</data>
+      <data key="d4">1</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js">
+      <data key="d0">state.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_loadstatefromstorage">
+      <data key="d0">loadStateFromStorage()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L29</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_savestatetostorage">
+      <data key="d0">saveStateToStorage()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L78</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_createprofile">
+      <data key="d0">createProfile()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L84</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_deleteprofile">
+      <data key="d0">deleteProfile()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L114</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_getactiveprofile">
+      <data key="d0">getActiveProfile()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L131</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_resetactiveprofilestats">
+      <data key="d0">resetActiveProfileStats()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L136</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="state_refreshactiveprofiledailystats">
+      <data key="d0">refreshActiveProfileDailyStats()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d3">L159</data>
+      <data key="d4">3</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_chart_js">
+      <data key="d0">chart.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\chart.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">14</data>
+    </node>
+    <node id="chart_drawmistakechart">
+      <data key="d0">drawMistakeChart()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\chart.js</data>
+      <data key="d3">L3</data>
+      <data key="d4">14</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js">
+      <data key="d0">dashboard.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\dashboard.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">9</data>
+    </node>
+    <node id="dashboard_renderanalyticsview">
+      <data key="d0">renderAnalyticsView()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\dashboard.js</data>
+      <data key="d3">L5</data>
+      <data key="d4">9</data>
+    </node>
+    <node id="dashboard_initializeanalyticsdashboard">
+      <data key="d0">initializeAnalyticsDashboard()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\dashboard.js</data>
+      <data key="d3">L126</data>
+      <data key="d4">9</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js">
+      <data key="d0">manager.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\profiles\manager.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">10</data>
+    </node>
+    <node id="manager_refreshprofileslist">
+      <data key="d0">refreshProfilesList()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\profiles\manager.js</data>
+      <data key="d3">L4</data>
+      <data key="d4">10</data>
+    </node>
+    <node id="manager_initializeprofilesmanager">
+      <data key="d0">initializeProfilesManager()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\profiles\manager.js</data>
+      <data key="d3">L70</data>
+      <data key="d4">10</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js">
+      <data key="d0">engine.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">8</data>
+    </node>
+    <node id="engine_weightedrandompick">
+      <data key="d0">weightedRandomPick()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d3">L7</data>
+      <data key="d4">8</data>
+    </node>
+    <node id="engine_generatequestion">
+      <data key="d0">generateQuestion()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d3">L21</data>
+      <data key="d4">8</data>
+    </node>
+    <node id="engine_recordattempt">
+      <data key="d0">recordAttempt()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d3">L108</data>
+      <data key="d4">8</data>
+    </node>
+    <node id="engine_recordmistake">
+      <data key="d0">recordMistake()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d3">L215</data>
+      <data key="d4">8</data>
+    </node>
+    <node id="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js">
+      <data key="d0">keypad.js</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\keypad.js</data>
+      <data key="d3">L1</data>
+      <data key="d4">11</data>
+    </node>
+    <node id="keypad_initializekeypad">
+      <data key="d0">initializeKeypad()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\keypad.js</data>
+      <data key="d3">L3</data>
+      <data key="d4">11</data>
+    </node>
+    <node id="keypad_updatekeypadvisibility">
+      <data key="d0">updateKeypadVisibility()</data>
+      <data key="d1">code</data>
+      <data key="d2">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\keypad.js</data>
+      <data key="d3">L46</data>
+      <data key="d4">11</data>
+    </node>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_python_desktop_app_alphabet_trainer_py" target="alphabet_trainer_advancedalphabettrainer">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L12</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_python_desktop_app_alphabet_trainer_py</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_init">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L13</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_init</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_load_persistent_stats">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L63</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_load_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_reset_factory_stats">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L86</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_factory_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_save_persistent_stats">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L93</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_setup_layout">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L107</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L216</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_reset_session">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L223</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_start_timer_session">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L227</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_tick_timer">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L260</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_tick_timer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L273</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L304</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_trigger_next_prompt</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L354</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_skip_question">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L393</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_skip_question</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_update_weak_areas_display">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L418</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_weak_areas_display</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_draw_performance_graph">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L454</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_draw_performance_graph</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L536</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer" target="alphabet_trainer_advancedalphabettrainer_wipe_history_data">
+      <data key="d5">method</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L541</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_wipe_history_data</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_init" target="alphabet_trainer_advancedalphabettrainer_load_persistent_stats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L37</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_init</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_load_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_init" target="alphabet_trainer_advancedalphabettrainer_setup_layout">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L58</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_init</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_init" target="alphabet_trainer_advancedalphabettrainer_reset_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L59</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_init</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_init" target="alphabet_trainer_advancedalphabettrainer_update_weak_areas_display">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L60</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_init</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_weak_areas_display</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_init" target="alphabet_trainer_advancedalphabettrainer_draw_performance_graph">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L61</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_init</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_draw_performance_graph</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_load_persistent_stats" target="alphabet_trainer_advancedalphabettrainer_reset_factory_stats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L82</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_load_persistent_stats</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_factory_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_load_persistent_stats" target="alphabet_trainer_rationale_64">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L64</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_64</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_load_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_reset_factory_stats" target="alphabet_trainer_advancedalphabettrainer_save_persistent_stats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L91</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_reset_factory_stats</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_reset_factory_stats" target="alphabet_trainer_advancedalphabettrainer_wipe_history_data">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L548</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_wipe_history_data</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_factory_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_save_persistent_stats" target="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L300</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_save_persistent_stats" target="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L387</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_save_persistent_stats" target="alphabet_trainer_advancedalphabettrainer_skip_question">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L414</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_skip_question</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_save_persistent_stats" target="alphabet_trainer_rationale_94">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L94</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_94</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_save_persistent_stats</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_setup_layout" target="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L130</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_setup_layout" target="alphabet_trainer_advancedalphabettrainer_reset_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L139</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_setup_layout" target="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L184</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_setup_layout" target="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L214</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_setup_layout</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text" target="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L301</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text" target="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L388</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text" target="alphabet_trainer_advancedalphabettrainer_skip_question">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L415</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_skip_question</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text" target="alphabet_trainer_advancedalphabettrainer_wipe_history_data">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L549</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_wipe_history_data</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_reset_session" target="alphabet_trainer_advancedalphabettrainer_start_timer_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L241</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_reset_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_start_timer_session" target="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L230</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_start_timer_session" target="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L257</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_trigger_next_prompt</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_start_timer_session" target="alphabet_trainer_advancedalphabettrainer_tick_timer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L258</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_tick_timer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_start_timer_session" target="alphabet_trainer_rationale_228">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L228</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_228</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_start_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_tick_timer" target="alphabet_trainer_advancedalphabettrainer_end_timer_session">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L271</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_tick_timer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_tick_timer" target="alphabet_trainer_rationale_261">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L261</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_261</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_tick_timer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_end_timer_session" target="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L302</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_end_timer_session" target="alphabet_trainer_rationale_274">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L274</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_274</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_end_timer_session</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt" target="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L391</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_trigger_next_prompt</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt" target="alphabet_trainer_advancedalphabettrainer_skip_question">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L416</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_skip_question</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_trigger_next_prompt</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_trigger_next_prompt" target="alphabet_trainer_rationale_305">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L305</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_305</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_trigger_next_prompt</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_evaluate_user_answer" target="alphabet_trainer_rationale_355">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L355</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_355</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_evaluate_user_answer</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_skip_question" target="alphabet_trainer_rationale_394">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L394</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_394</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_skip_question</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_weak_areas_display" target="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L538</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_weak_areas_display</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_update_weak_areas_display" target="alphabet_trainer_rationale_419">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L419</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_419</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_update_weak_areas_display</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_draw_performance_graph" target="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L539</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_draw_performance_graph</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_draw_performance_graph" target="alphabet_trainer_rationale_455">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L455</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_455</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_draw_performance_graph</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view" target="alphabet_trainer_advancedalphabettrainer_wipe_history_data">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L550</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_advancedalphabettrainer_wipe_history_data</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_refresh_analytics_view" target="alphabet_trainer_rationale_537">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L537</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_537</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_refresh_analytics_view</data>
+    </edge>
+    <edge source="alphabet_trainer_advancedalphabettrainer_wipe_history_data" target="alphabet_trainer_rationale_542">
+      <data key="d5">rationale_for</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\python-desktop-app\alphabet_trainer.py</data>
+      <data key="d8">L542</data>
+      <data key="d9">1.0</data>
+      <data key="d10">alphabet_trainer_rationale_542</data>
+      <data key="d11">alphabet_trainer_advancedalphabettrainer_wipe_history_data</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_counter_js" target="counter_setupcounter">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\counter.js</data>
+      <data key="d8">L1</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_counter_js</data>
+      <data key="d11">counter_setupcounter</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_mapelements">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L23</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_mapelements</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_setupnavigation">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L71</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_setupnavigation</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_updateprofilecardwidget">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L104</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_onactiveprofilechanged">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L119</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_onactiveprofilechanged</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_setupworkoutconfig">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L130</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_setupworkoutconfig</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_setupthemeswitcher">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L204</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_setupthemeswitcher</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_applytheme">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L219</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_applytheme</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_startworkoutrun">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L243</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_startworkoutrun</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_ticktimertext">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L293</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_ticktimertext</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_promptnextquestion">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L301</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_promptnextquestion</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_checkuseranswer">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L333</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_checkuseranswer</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_skipquestion">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L380</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_skipquestion</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_endworkoutrun">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L411</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_endworkoutrun</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_stopworkoutrun">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L415</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_stopworkoutrun</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_setuplearninghub">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L443</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_setuplearninghub</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_rendertablesgrid">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L544</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_rendertablesgrid</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_gettableheatmapstatus">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L577</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_gettableheatmapstatus</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_rendertabledetails">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L610</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_rendertabledetails</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_buildsquarestable">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L659</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_buildsquarestable</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_buildcubestable">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L678</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_buildcubestable</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_renderlearninghubstate">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L696</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_renderlearninghubstate</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_renderdashboardview">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L708</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_renderdashboardview</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_initapplication">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L840</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_initapplication</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js" target="main_safeinit">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L945</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js</data>
+      <data key="d11">main_safeinit</data>
+    </edge>
+    <edge source="main_mapelements" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L842</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_mapelements</data>
+    </edge>
+    <edge source="main_setupnavigation" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L847</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_setupnavigation</data>
+    </edge>
+    <edge source="main_updateprofilecardwidget" target="main_onactiveprofilechanged">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L120</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_onactiveprofilechanged</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="main_updateprofilecardwidget" target="main_checkuseranswer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L376</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_checkuseranswer</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="main_updateprofilecardwidget" target="main_skipquestion">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L407</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_skipquestion</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="main_updateprofilecardwidget" target="main_stopworkoutrun">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L439</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_stopworkoutrun</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="main_updateprofilecardwidget" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L849</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_updateprofilecardwidget</data>
+    </edge>
+    <edge source="main_onactiveprofilechanged" target="main_renderlearninghubstate">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L123</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_onactiveprofilechanged</data>
+      <data key="d11">main_renderlearninghubstate</data>
+    </edge>
+    <edge source="main_onactiveprofilechanged" target="main_renderdashboardview">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L125</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_onactiveprofilechanged</data>
+      <data key="d11">main_renderdashboardview</data>
+    </edge>
+    <edge source="main_setupworkoutconfig" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L848</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_setupworkoutconfig</data>
+    </edge>
+    <edge source="main_setupthemeswitcher" target="main_applytheme">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L209</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_setupthemeswitcher</data>
+      <data key="d11">main_applytheme</data>
+    </edge>
+    <edge source="main_setupthemeswitcher" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L857</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_setupthemeswitcher</data>
+    </edge>
+    <edge source="main_startworkoutrun" target="main_ticktimertext">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L280</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_startworkoutrun</data>
+      <data key="d11">main_ticktimertext</data>
+    </edge>
+    <edge source="main_startworkoutrun" target="main_promptnextquestion">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L281</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_startworkoutrun</data>
+      <data key="d11">main_promptnextquestion</data>
+    </edge>
+    <edge source="main_promptnextquestion" target="main_checkuseranswer">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L377</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_checkuseranswer</data>
+      <data key="d11">main_promptnextquestion</data>
+    </edge>
+    <edge source="main_promptnextquestion" target="main_skipquestion">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L408</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_skipquestion</data>
+      <data key="d11">main_promptnextquestion</data>
+    </edge>
+    <edge source="main_endworkoutrun" target="main_stopworkoutrun">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L412</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_endworkoutrun</data>
+      <data key="d11">main_stopworkoutrun</data>
+    </edge>
+    <edge source="main_setuplearninghub" target="main_buildsquarestable">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L539</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_setuplearninghub</data>
+      <data key="d11">main_buildsquarestable</data>
+    </edge>
+    <edge source="main_setuplearninghub" target="main_buildcubestable">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L540</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_setuplearninghub</data>
+      <data key="d11">main_buildcubestable</data>
+    </edge>
+    <edge source="main_setuplearninghub" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L858</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_setuplearninghub</data>
+    </edge>
+    <edge source="main_rendertablesgrid" target="main_gettableheatmapstatus">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L559</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_rendertablesgrid</data>
+      <data key="d11">main_gettableheatmapstatus</data>
+    </edge>
+    <edge source="main_rendertablesgrid" target="main_renderlearninghubstate">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L697</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_renderlearninghubstate</data>
+      <data key="d11">main_rendertablesgrid</data>
+    </edge>
+    <edge source="main_gettableheatmapstatus" target="main_renderdashboardview">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L783</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_renderdashboardview</data>
+      <data key="d11">main_gettableheatmapstatus</data>
+    </edge>
+    <edge source="main_rendertabledetails" target="main_renderlearninghubstate">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L699</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_renderlearninghubstate</data>
+      <data key="d11">main_rendertabledetails</data>
+    </edge>
+    <edge source="main_renderdashboardview" target="main_initapplication">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L864</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_initapplication</data>
+      <data key="d11">main_renderdashboardview</data>
+    </edge>
+    <edge source="main_initapplication" target="main_safeinit">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\main.js</data>
+      <data key="d8">L948</data>
+      <data key="d9">1.0</data>
+      <data key="d10">main_safeinit</data>
+      <data key="d11">main_initapplication</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_loadstatefromstorage">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L29</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_loadstatefromstorage</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_savestatetostorage">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L78</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_savestatetostorage</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_createprofile">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L84</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_createprofile</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_deleteprofile">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L114</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_deleteprofile</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_getactiveprofile">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L131</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_getactiveprofile</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_resetactiveprofilestats">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L136</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_resetactiveprofilestats</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js" target="state_refreshactiveprofiledailystats">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L159</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js</data>
+      <data key="d11">state_refreshactiveprofiledailystats</data>
+    </edge>
+    <edge source="state_loadstatefromstorage" target="state_createprofile">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L44</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_loadstatefromstorage</data>
+      <data key="d11">state_createprofile</data>
+    </edge>
+    <edge source="state_savestatetostorage" target="state_createprofile">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L109</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_createprofile</data>
+      <data key="d11">state_savestatetostorage</data>
+    </edge>
+    <edge source="state_savestatetostorage" target="state_deleteprofile">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L126</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_deleteprofile</data>
+      <data key="d11">state_savestatetostorage</data>
+    </edge>
+    <edge source="state_savestatetostorage" target="state_resetactiveprofilestats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L155</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_resetactiveprofilestats</data>
+      <data key="d11">state_savestatetostorage</data>
+    </edge>
+    <edge source="state_savestatetostorage" target="state_refreshactiveprofiledailystats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L181</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_refreshactiveprofiledailystats</data>
+      <data key="d11">state_savestatetostorage</data>
+    </edge>
+    <edge source="state_getactiveprofile" target="state_resetactiveprofilestats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L137</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_resetactiveprofilestats</data>
+      <data key="d11">state_getactiveprofile</data>
+    </edge>
+    <edge source="state_getactiveprofile" target="state_refreshactiveprofiledailystats">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\state.js</data>
+      <data key="d8">L160</data>
+      <data key="d9">1.0</data>
+      <data key="d10">state_refreshactiveprofiledailystats</data>
+      <data key="d11">state_getactiveprofile</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_chart_js" target="chart_drawmistakechart">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\chart.js</data>
+      <data key="d8">L3</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_chart_js</data>
+      <data key="d11">chart_drawmistakechart</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js" target="dashboard_renderanalyticsview">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\dashboard.js</data>
+      <data key="d8">L5</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js</data>
+      <data key="d11">dashboard_renderanalyticsview</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js" target="dashboard_initializeanalyticsdashboard">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\analytics\dashboard.js</data>
+      <data key="d8">L126</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js</data>
+      <data key="d11">dashboard_initializeanalyticsdashboard</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js" target="manager_refreshprofileslist">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\profiles\manager.js</data>
+      <data key="d8">L4</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js</data>
+      <data key="d11">manager_refreshprofileslist</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js" target="manager_initializeprofilesmanager">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\profiles\manager.js</data>
+      <data key="d8">L70</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js</data>
+      <data key="d11">manager_initializeprofilesmanager</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js" target="engine_weightedrandompick">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L7</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js</data>
+      <data key="d11">engine_weightedrandompick</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js" target="engine_generatequestion">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L21</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js</data>
+      <data key="d11">engine_generatequestion</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js" target="engine_recordattempt">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L108</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js</data>
+      <data key="d11">engine_recordattempt</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js" target="engine_recordmistake">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L215</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js</data>
+      <data key="d11">engine_recordmistake</data>
+    </edge>
+    <edge source="engine_weightedrandompick" target="engine_generatequestion">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L65</data>
+      <data key="d9">1.0</data>
+      <data key="d10">engine_generatequestion</data>
+      <data key="d11">engine_weightedrandompick</data>
+    </edge>
+    <edge source="engine_recordattempt" target="engine_recordmistake">
+      <data key="d5">calls</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\engine.js</data>
+      <data key="d8">L216</data>
+      <data key="d9">1.0</data>
+      <data key="d10">engine_recordmistake</data>
+      <data key="d11">engine_recordattempt</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js" target="keypad_initializekeypad">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\keypad.js</data>
+      <data key="d8">L3</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js</data>
+      <data key="d11">keypad_initializekeypad</data>
+    </edge>
+    <edge source="c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js" target="keypad_updatekeypadvisibility">
+      <data key="d5">contains</data>
+      <data key="d6">EXTRACTED</data>
+      <data key="d7">C:\Users\bhavn\OneDrive\Desktop\ssc ai\src\trainer\keypad.js</data>
+      <data key="d8">L46</data>
+      <data key="d9">1.0</data>
+      <data key="d10">c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js</data>
+      <data key="d11">keypad_updatekeypadvisibility</data>
+    </edge>
+  </graph>
+</graphml>

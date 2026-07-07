@@ -1,0 +1,257 @@
+{
+  "communities": {
+    "0": [
+      "alphabet_trainer_advancedalphabettrainer",
+      "alphabet_trainer_advancedalphabettrainer_draw_performance_graph",
+      "alphabet_trainer_advancedalphabettrainer_init",
+      "alphabet_trainer_advancedalphabettrainer_refresh_analytics_view",
+      "alphabet_trainer_advancedalphabettrainer_reset_session",
+      "alphabet_trainer_advancedalphabettrainer_setup_layout",
+      "alphabet_trainer_advancedalphabettrainer_update_weak_areas_display",
+      "alphabet_trainer_rationale_419",
+      "alphabet_trainer_rationale_455",
+      "alphabet_trainer_rationale_537",
+      "c_users_bhavn_onedrive_desktop_ssc_ai_python_desktop_app_alphabet_trainer_py"
+    ],
+    "1": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_main_js",
+      "main_applytheme",
+      "main_buildcubestable",
+      "main_buildsquarestable",
+      "main_initapplication",
+      "main_mapelements",
+      "main_safeinit",
+      "main_setuplearninghub",
+      "main_setupnavigation",
+      "main_setupthemeswitcher",
+      "main_setupworkoutconfig"
+    ],
+    "2": [
+      "alphabet_trainer_advancedalphabettrainer_evaluate_user_answer",
+      "alphabet_trainer_advancedalphabettrainer_skip_question",
+      "alphabet_trainer_advancedalphabettrainer_trigger_next_prompt",
+      "alphabet_trainer_advancedalphabettrainer_update_persistent_scoreboard_text",
+      "alphabet_trainer_advancedalphabettrainer_wipe_history_data",
+      "alphabet_trainer_rationale_305",
+      "alphabet_trainer_rationale_355",
+      "alphabet_trainer_rationale_394",
+      "alphabet_trainer_rationale_542"
+    ],
+    "3": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_state_js",
+      "state_createprofile",
+      "state_deleteprofile",
+      "state_getactiveprofile",
+      "state_loadstatefromstorage",
+      "state_refreshactiveprofiledailystats",
+      "state_resetactiveprofilestats",
+      "state_savestatetostorage"
+    ],
+    "4": [
+      "alphabet_trainer_advancedalphabettrainer_end_timer_session",
+      "alphabet_trainer_advancedalphabettrainer_start_timer_session",
+      "alphabet_trainer_advancedalphabettrainer_tick_timer",
+      "alphabet_trainer_rationale_228",
+      "alphabet_trainer_rationale_261",
+      "alphabet_trainer_rationale_274"
+    ],
+    "5": [
+      "main_checkuseranswer",
+      "main_endworkoutrun",
+      "main_promptnextquestion",
+      "main_skipquestion",
+      "main_stopworkoutrun",
+      "main_updateprofilecardwidget"
+    ],
+    "6": [
+      "main_gettableheatmapstatus",
+      "main_onactiveprofilechanged",
+      "main_renderdashboardview",
+      "main_renderlearninghubstate",
+      "main_rendertabledetails",
+      "main_rendertablesgrid"
+    ],
+    "7": [
+      "alphabet_trainer_advancedalphabettrainer_load_persistent_stats",
+      "alphabet_trainer_advancedalphabettrainer_reset_factory_stats",
+      "alphabet_trainer_advancedalphabettrainer_save_persistent_stats",
+      "alphabet_trainer_rationale_64",
+      "alphabet_trainer_rationale_94"
+    ],
+    "8": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_engine_js",
+      "engine_generatequestion",
+      "engine_recordattempt",
+      "engine_recordmistake",
+      "engine_weightedrandompick"
+    ],
+    "9": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_dashboard_js",
+      "dashboard_initializeanalyticsdashboard",
+      "dashboard_renderanalyticsview"
+    ],
+    "10": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_profiles_manager_js",
+      "manager_initializeprofilesmanager",
+      "manager_refreshprofileslist"
+    ],
+    "11": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_trainer_keypad_js",
+      "keypad_initializekeypad",
+      "keypad_updatekeypadvisibility"
+    ],
+    "12": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_counter_js",
+      "counter_setupcounter"
+    ],
+    "13": [
+      "main_startworkoutrun",
+      "main_ticktimertext"
+    ],
+    "14": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_src_analytics_chart_js",
+      "chart_drawmistakechart"
+    ],
+    "15": [
+      "c_users_bhavn_onedrive_desktop_ssc_ai_vite_config_js"
+    ]
+  },
+  "cohesion": {
+    "0": 0.33,
+    "1": 0.35,
+    "2": 0.25,
+    "3": 0.5,
+    "4": 0.4,
+    "5": 0.4,
+    "6": 0.4,
+    "7": 0.4,
+    "8": 0.6,
+    "9": 0.67,
+    "10": 0.67,
+    "11": 0.67,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0
+  },
+  "gods": [
+    {
+      "id": "alphabet_trainer_advancedalphabettrainer",
+      "label": "AdvancedAlphabetTrainer",
+      "edges": 18
+    },
+    {
+      "id": "main_initapplication",
+      "label": "initApplication()",
+      "edges": 9
+    },
+    {
+      "id": "main_updateprofilecardwidget",
+      "label": "updateProfileCardWidget()",
+      "edges": 6
+    },
+    {
+      "id": "state_savestatetostorage",
+      "label": "saveStateToStorage()",
+      "edges": 5
+    },
+    {
+      "id": "main_onactiveprofilechanged",
+      "label": "onActiveProfileChanged()",
+      "edges": 4
+    },
+    {
+      "id": "main_promptnextquestion",
+      "label": "promptNextQuestion()",
+      "edges": 4
+    },
+    {
+      "id": "main_setuplearninghub",
+      "label": "setupLearningHub()",
+      "edges": 4
+    },
+    {
+      "id": "main_renderlearninghubstate",
+      "label": "renderLearningHubState()",
+      "edges": 4
+    },
+    {
+      "id": "main_renderdashboardview",
+      "label": "renderDashboardView()",
+      "edges": 4
+    },
+    {
+      "id": "main_setupthemeswitcher",
+      "label": "setupThemeSwitcher()",
+      "edges": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "onActiveProfileChanged()",
+      "target": "updateProfileCardWidget()",
+      "source_files": [
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js",
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 5 \u2192 community 6"
+    },
+    {
+      "source": "initApplication()",
+      "target": "updateProfileCardWidget()",
+      "source_files": [
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js",
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 5 \u2192 community 1"
+    },
+    {
+      "source": "startWorkoutRun()",
+      "target": "promptNextQuestion()",
+      "source_files": [
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js",
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 13 \u2192 community 5"
+    },
+    {
+      "source": "initApplication()",
+      "target": "renderDashboardView()",
+      "source_files": [
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js",
+        "C:\\Users\\bhavn\\OneDrive\\Desktop\\ssc ai\\src\\main.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 6 \u2192 community 1"
+    }
+  ],
+  "suggested_questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `AdvancedAlphabetTrainer` connect `Community 0` to `Community 2`, `Community 4`, `Community 7`?",
+      "why": "High betweenness centrality (0.075) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `initApplication()` connect `Community 1` to `Community 5`, `Community 6`?",
+      "why": "High betweenness centrality (0.004) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `updateProfileCardWidget()` connect `Community 5` to `Community 1`, `Community 6`?",
+      "why": "High betweenness centrality (0.001) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `Loads historical progress from a local JSON text file.`, `Saves historical progress to a local JSON text file permanently.`, `Starts a new countdown training session.` to the rest of the system?",
+      "why": "12 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}
