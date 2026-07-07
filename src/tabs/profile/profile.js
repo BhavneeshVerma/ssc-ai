@@ -10,6 +10,13 @@ import {
 } from '../../state.js';
 import { supabase } from '../../supabaseClient.js';
 
+function getOAuthRedirectUrl() {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    url.search = "";
+    return url.toString();
+}
+
 function escapeHTML(str) {
     if (!str) return '';
     return str.toString()
@@ -188,7 +195,7 @@ export function setupCloudSyncUI(onActiveProfileChanged) {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
-                    redirectTo: window.location.origin + window.location.pathname
+                    redirectTo: getOAuthRedirectUrl()
                 }
             });
 

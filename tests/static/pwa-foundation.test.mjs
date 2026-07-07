@@ -172,7 +172,16 @@ test('profile cloud sync exposes Google OAuth sign-in', () => {
 
   assert.match(html, /id=["']cloudGoogleSignInBtn["']/);
   assert.match(profile, /signInWithOAuth\(\{\s*provider:\s*["']google["']/);
-  assert.match(profile, /redirectTo:\s*window\.location\.origin/);
+  assert.match(profile, /redirectTo:\s*getOAuthRedirectUrl\(\)/);
+});
+
+test('google sign-in uses supabase oauth redirect helper', () => {
+  const profile = readText('src/tabs/profile/profile.js');
+
+  assert.match(profile, /function getOAuthRedirectUrl\(\)/);
+  assert.match(profile, /signInWithOAuth\(\{\s*provider:\s*["']google["']/);
+  assert.match(profile, /redirectTo:\s*getOAuthRedirectUrl\(\)/);
+  assert.doesNotMatch(profile, /accounts\.google\.com\/gsi/);
 });
 
 test('supabase client uses vite environment variables only', () => {
