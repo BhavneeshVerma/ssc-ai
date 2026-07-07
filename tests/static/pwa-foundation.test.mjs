@@ -174,3 +174,12 @@ test('profile cloud sync exposes Google OAuth sign-in', () => {
   assert.match(profile, /signInWithOAuth\(\{\s*provider:\s*["']google["']/);
   assert.match(profile, /redirectTo:\s*window\.location\.origin/);
 });
+
+test('supabase client uses vite environment variables only', () => {
+  const client = readText('src/supabaseClient.js');
+
+  assert.match(client, /VITE_SUPABASE_URL/);
+  assert.match(client, /VITE_SUPABASE_ANON_KEY/);
+  assert.doesNotMatch(client, /https:\/\/[a-z0-9-]+\.supabase\.co/i);
+  assert.doesNotMatch(client, /eyJ[A-Za-z0-9_-]+\./);
+});
