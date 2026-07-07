@@ -203,3 +203,12 @@ test('auth session restore loads cloud profile and refreshes profile UI', () => 
   assert.match(main, /cloud-sync-changed/);
   assert.match(profile, /export function renderCloudAuthState\(\)/);
 });
+
+test('cloud profile sync is scoped by authenticated user id', () => {
+  const state = readText('src/state.js');
+
+  assert.match(state, /state\.supabaseUser/);
+  assert.match(state, /user_id/);
+  assert.match(state, /\.eq\(["']user_id["'],\s*state\.supabaseUser\.id\)/);
+  assert.match(state, /upsert/);
+});

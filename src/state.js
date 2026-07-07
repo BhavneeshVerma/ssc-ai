@@ -297,7 +297,7 @@ export async function loadActiveProfileFromCloud() {
         const { data, error } = await supabase
             .from('profiles')
             .select('*')
-            .eq('user_id', user.id)
+            .eq('user_id', state.supabaseUser.id)
             .maybeSingle();
             
         if (error) throw error;
