@@ -1,12 +1,15 @@
 // Application Entry Point (Main Controller)
 import './style.css'; // Load stylesheet
+import { supabase } from './supabaseClient.js';
 import { 
     state, 
     loadStateFromStorage, 
     saveStateToStorage, 
     getActiveProfile, 
     resetActiveProfileStats,
-    refreshActiveProfileDailyStats
+    refreshActiveProfileDailyStats,
+    syncActiveProfileToCloud,
+    loadActiveProfileFromCloud
 } from './state.js';
 import { generateQuestion, recordAttempt } from './trainer/engine.js';
 import { initializeKeypad, updateKeypadVisibility } from './trainer/keypad.js';
@@ -123,6 +126,11 @@ function onActiveProfileChanged() {
         renderLearningHubState();
     } else if (state.currentTab === "dashboard" || !state.currentTab) {
         renderDashboardView();
+    }
+    
+    // Auto-sync profile to cloud if authenticated
+    if (supabase && state.supabaseUser) {
+        syncActiveProfileToCloud();
     }
 }
 
@@ -848,6 +856,41 @@ function initApplication() {
     setupWorkoutConfig();
     updateProfileCardWidget();
     
+    // Check active cloud session on startup
+    if (supabase) {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session && session.user) {
+                state.supabaseUser = session.user;
+                state.supabaseSession = session;
+                window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
+                    detail: { status: 'synced', user: session.user }
+                }));
+                loadActiveProfileFromCloud().then(() => {
+                    onActiveProfileChanged();
+                });
+            }
+        });
+        
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_IN' && session) {
+                state.supabaseUser = session.user;
+                state.supabaseSession = session;
+                window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
+                    detail: { status: 'synced', user: session.user }
+                }));
+                loadActiveProfileFromCloud().then(() => {
+                    onActiveProfileChanged();
+                });
+            } else if (event === 'SIGNED_OUT') {
+                state.supabaseUser = null;
+                state.supabaseSession = null;
+                window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
+                    detail: { status: 'disconnected', user: null }
+                }));
+            }
+        });
+    }
+    
     // Wire submodules controllers
     initializeKeypad(elements.answerInput, checkUserAnswer);
     initializeAnalyticsDashboard();
@@ -856,6 +899,7 @@ function initApplication() {
     // Setup theme switcher and Learning Hub
     setupThemeSwitcher();
     setupLearningHub();
+    setupCloudSyncUI();
     
     // Set default keypad layout
     updateKeypadVisibility(elements.modeSelect.value);
@@ -938,6 +982,136 @@ function initApplication() {
             }
         });
     }
+}
+
+// Supabase Cloud Sync UI binding and management
+function setupCloudSyncUI() {
+    const emailInput = document.getElementById("cloudEmail");
+    const passwordInput = document.getElementById("cloudPassword");
+    const signInBtn = document.getElementById("cloudSignInBtn");
+    const signUpBtn = document.getElementById("cloudSignUpBtn");
+    const signOutBtn = document.getElementById("cloudSignOutBtn");
+    const syncBtn = document.getElementById("cloudSyncBtn");
+    
+    const authForm = document.getElementById("cloudAuthForm");
+    const userDetails = document.getElementById("cloudUserDetails");
+    const userEmailDisplay = document.getElementById("cloudUserEmail");
+    const statusBadge = document.getElementById("cloudStatusBadge");
+    
+    if (!supabase) {
+        if (statusBadge) {
+            statusBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Offline Mode`;
+            statusBadge.className = "cloud-badge warning";
+        }
+        if (authForm) authForm.style.display = "none";
+        return;
+    }
+    
+    // Wire click events
+    if (signInBtn) {
+        signInBtn.addEventListener("click", async () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            if (!email || !password) {
+                alert("Please enter both email and password.");
+                return;
+            }
+            signInBtn.disabled = true;
+            signInBtn.textContent = "Signing In...";
+            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            signInBtn.disabled = false;
+            signInBtn.textContent = "Sign In";
+            if (error) {
+                alert("Sign In failed: " + error.message);
+            } else {
+                emailInput.value = "";
+                passwordInput.value = "";
+                await loadActiveProfileFromCloud();
+                onActiveProfileChanged();
+            }
+        });
+    }
+    
+    if (signUpBtn) {
+        signUpBtn.addEventListener("click", async () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            if (!email || !password) {
+                alert("Please enter both email and password.");
+                return;
+            }
+            signUpBtn.disabled = true;
+            signUpBtn.textContent = "Signing Up...";
+            const { error } = await supabase.auth.signUp({ email, password });
+            signUpBtn.disabled = false;
+            signUpBtn.textContent = "Sign Up";
+            if (error) {
+                alert("Sign Up failed: " + error.message);
+            } else {
+                alert("Sign Up successful! If email confirmation is enabled, check your email. Otherwise, you can now log in.");
+                emailInput.value = "";
+                passwordInput.value = "";
+            }
+        });
+    }
+    
+    if (signOutBtn) {
+        signOutBtn.addEventListener("click", async () => {
+            signOutBtn.disabled = true;
+            const { error } = await supabase.auth.signOut();
+            signOutBtn.disabled = false;
+            if (error) {
+                alert("Sign Out failed: " + error.message);
+            } else {
+                state.supabaseUser = null;
+                window.dispatchEvent(new CustomEvent('cloud-sync-changed', {
+                    detail: { status: 'disconnected', user: null }
+                }));
+                alert("Logged out successfully.");
+            }
+        });
+    }
+    
+    if (syncBtn) {
+        syncBtn.addEventListener("click", async () => {
+            syncBtn.disabled = true;
+            syncBtn.innerHTML = `<i class="fa-solid fa-rotate spin"></i> Syncing...`;
+            await syncActiveProfileToCloud();
+            syncBtn.disabled = false;
+            syncBtn.innerHTML = `<i class="fa-solid fa-rotate"></i> Sync Now`;
+        });
+    }
+    
+    // Status event handler
+    window.addEventListener('cloud-sync-changed', (e) => {
+        const { status, user } = e.detail;
+        
+        if (user) {
+            if (authForm) authForm.style.display = "none";
+            if (userDetails) userDetails.style.display = "block";
+            if (userEmailDisplay) userEmailDisplay.textContent = user.email;
+            
+            if (statusBadge) {
+                if (status === 'syncing') {
+                    statusBadge.innerHTML = `<i class="fa-solid fa-rotate spin"></i> Syncing...`;
+                    statusBadge.className = "cloud-badge active";
+                } else if (status === 'synced') {
+                    statusBadge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Synced to Cloud`;
+                    statusBadge.className = "cloud-badge success";
+                } else if (status === 'error') {
+                    statusBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Sync Error`;
+                    statusBadge.className = "cloud-badge danger";
+                }
+            }
+        } else {
+            if (authForm) authForm.style.display = "block";
+            if (userDetails) userDetails.style.display = "none";
+            if (statusBadge) {
+                statusBadge.innerHTML = `<i class="fa-solid fa-circle-nodes"></i> Ready to Connect`;
+                statusBadge.className = "cloud-badge";
+            }
+        }
+    });
 }
 
 // Run initializer — guard against double-invocation

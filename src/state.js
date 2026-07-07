@@ -1,4 +1,5 @@
 // State Management Module
+import { supabase } from './supabaseClient.js';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -6,6 +7,8 @@ const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const state = {
     profiles: {},
     activeProfileId: "guest",
+    supabaseUser: null,
+    cloudSyncStatus: 'disconnected',
     currentWorkout: {
         isActive: false,
         mode: "alphaToNum",
@@ -78,6 +81,11 @@ export function loadStateFromStorage() {
 export function saveStateToStorage() {
     localStorage.setItem("trainer_profiles", JSON.stringify(state.profiles));
     localStorage.setItem("trainer_active_profile", state.activeProfileId);
+    
+    // Trigger background sync if Supabase is initialized and user is logged in
+    if (supabase && state.supabaseUser) {
+        syncActiveProfileToCloud();
+    }
 }
 
 // Create a new user profile
@@ -181,4 +189,112 @@ export function refreshActiveProfileDailyStats() {
         saveStateToStorage();
     }
 }
+
+// ==========================================
+// Supabase Cloud Syncing Logic
+// ==========================================
+
+export async function syncActiveProfileToCloud() {
+    if (!supabase) return;
+    
+    // Retrieve current session/user
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+        state.supabaseUser = null;
+        state.cloudSyncStatus = 'disconnected';
+        dispatchSyncEvent();
+        return;
+    }
+    
+    state.supabaseUser = user;
+    state.cloudSyncStatus = 'syncing';
+    dispatchSyncEvent();
+    
+    const profile = getActiveProfile();
+    if (!profile) return;
+    
+    try {
+        const { error } = await supabase
+            .from('profiles')
+            .upsert({
+                user_id: user.id,
+                display_name: profile.name,
+                all_time_correct: profile.all_time_correct,
+                all_time_total: profile.all_time_total,
+                streak: profile.streak || 0,
+                today_count: profile.today_count || 0,
+                last_active_date: profile.last_active_date || '',
+                wrong_counts: profile.wrong_counts || {},
+                table_wrong_counts: profile.table_wrong_counts || {},
+                detailed_mistakes: profile.detailed_mistakes || { tables: {}, alpha: {} }
+            }, { onConflict: 'user_id' });
+            
+        if (error) throw error;
+        state.cloudSyncStatus = 'synced';
+    } catch (err) {
+        console.error("Cloud sync failed:", err);
+        state.cloudSyncStatus = 'error';
+    }
+    dispatchSyncEvent();
+}
+
+export async function loadActiveProfileFromCloud() {
+    if (!supabase) return;
+    
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    
+    state.supabaseUser = user;
+    state.cloudSyncStatus = 'syncing';
+    dispatchSyncEvent();
+    
+    try {
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('user_id', user.id)
+            .maybeSingle();
+            
+        if (error) throw error;
+        
+        if (data) {
+            const profileId = user.id;
+            state.profiles[profileId] = {
+                name: data.display_name,
+                all_time_correct: data.all_time_correct,
+                all_time_total: data.all_time_total,
+                streak: data.streak,
+                today_count: data.today_count,
+                last_active_date: data.last_active_date,
+                wrong_counts: data.wrong_counts,
+                table_wrong_counts: data.table_wrong_counts,
+                detailed_mistakes: data.detailed_mistakes
+            };
+            state.activeProfileId = profileId;
+            localStorage.setItem("trainer_active_profile", profileId);
+            
+            // Bypass saveStateToStorage to avoid loop
+            localStorage.setItem("trainer_profiles", JSON.stringify(state.profiles));
+            state.cloudSyncStatus = 'synced';
+        } else {
+            // First time cloud user: sync their currently active local profile to create the row
+            await syncActiveProfileToCloud();
+        }
+    } catch (err) {
+        console.error("Failed to load profile from cloud:", err);
+        state.cloudSyncStatus = 'error';
+    }
+    dispatchSyncEvent();
+}
+
+function dispatchSyncEvent() {
+    const event = new CustomEvent('cloud-sync-changed', {
+        detail: {
+            status: state.cloudSyncStatus,
+            user: state.supabaseUser
+        }
+    });
+    window.dispatchEvent(event);
+}
+
 

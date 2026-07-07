@@ -1511,6 +1511,16 @@ input:focus, select:focus { border-color: var(--primary); }
     padding: 4px 10px;
     margin-bottom: 12px;
     font-family: 'Space Grotesk', sans-serif;
+    border: 1px solid var(--border);
+}
+
+.cloud-badge.success { background: var(--success); color: #FFFFFF; }
+.cloud-badge.warning { background: var(--warning); color: #111111; }
+.cloud-badge.danger { background: var(--danger); color: #FFFFFF; }
+.cloud-badge.active { background: var(--text-main); color: var(--bg-panel); }
+
+.spin {
+    animation: fa-spin 1.5s infinite linear;
 }
 
 .cloud-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }

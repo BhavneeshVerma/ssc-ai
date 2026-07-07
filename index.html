@@ -568,7 +568,7 @@
                         </div>
                     </div>
 
-                    <!-- Supabase DB Cloud Connect (Future Proofing UI) -->
+                    <!-- Supabase DB Cloud Connect -->
                     <div class="card cloud-card">
                         <div class="cloud-header">
                             <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
@@ -577,8 +577,34 @@
                                 <p class="panel-description">Sync stats across devices and show up on the leaderboard.</p>
                             </div>
                         </div>
-                        <div class="cloud-badge"><i class="fa-solid fa-circle-nodes"></i> Ready to Connect</div>
-                        <p class="cloud-text">This app is built to plug directly into a database like <strong>Supabase</strong>. To enable online accounts and cloud sync, simple configuration can be toggled by the admin.</p>
+                        <div id="cloudStatusContainer">
+                            <div class="cloud-badge" id="cloudStatusBadge"><i class="fa-solid fa-circle-nodes"></i> Ready to Connect</div>
+                        </div>
+                        
+                        <!-- Logged out Auth panel -->
+                        <div id="cloudAuthForm" class="cloud-auth-form" style="margin-top: 15px;">
+                            <div class="form-group" style="margin-bottom: 10px;">
+                                <label for="cloudEmail" style="font-size: 12px; margin-bottom: 4px; display: block;">Email Address</label>
+                                <input type="email" id="cloudEmail" placeholder="student@example.com..." style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text);">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="cloudPassword" style="font-size: 12px; margin-bottom: 4px; display: block;">Password</label>
+                                <input type="password" id="cloudPassword" placeholder="••••••••" style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text);">
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button id="cloudSignInBtn" class="btn btn-primary" style="flex: 1; padding: 8px; font-size: 13px;">Sign In</button>
+                                <button id="cloudSignUpBtn" class="btn btn-secondary" style="flex: 1; padding: 8px; font-size: 13px;">Sign Up</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Logged in Details panel -->
+                        <div id="cloudUserDetails" style="display: none; margin-top: 15px;">
+                            <p class="cloud-text" style="font-size: 13px; margin-bottom: 15px;">Connected as: <strong id="cloudUserEmail">student@email.com</strong></p>
+                            <div style="display: flex; gap: 10px;">
+                                <button id="cloudSyncBtn" class="btn btn-accent" style="flex: 1; padding: 8px; font-size: 13px;"><i class="fa-solid fa-rotate"></i> Sync Now</button>
+                                <button id="cloudSignOutBtn" class="btn btn-danger" style="flex: 1; padding: 8px; font-size: 13px;"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
