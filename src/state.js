@@ -426,3 +426,56 @@ export async function autoCaptureToBankIfFailed(mode, questionData, userAnswer) 
     }
 }
 
+export async function getQuestionBank() {
+    if (!supabase || !state.supabaseUser) return [];
+    try {
+        const { data, error } = await supabase
+            .from('question_bank')
+            .select('*')
+            .eq('user_id', state.supabaseUser.id)
+            .order('created_at', { ascending: false });
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error("Failed to fetch question bank:", err);
+        return [];
+    }
+}
+
+export async function addManualQuestion(discipline, topic, questionText, correctAnswer, notes = "") {
+    if (!supabase || !state.supabaseUser) return;
+    try {
+        const { error } = await supabase
+            .from('question_bank')
+            .insert({
+                user_id: state.supabaseUser.id,
+                source: 'manual',
+                discipline,
+                topic,
+                question_text: questionText,
+                correct_answer: correctAnswer,
+                notes: notes
+            });
+        if (error) throw error;
+    } catch (err) {
+        console.error("Failed to add manual question:", err);
+        throw err;
+    }
+}
+
+export async function deleteQuestionFromBank(questionId) {
+    if (!supabase || !state.supabaseUser) return;
+    try {
+        const { error } = await supabase
+            .from('question_bank')
+            .delete()
+            .eq('id', questionId)
+            .eq('user_id', state.supabaseUser.id);
+        if (error) throw error;
+    } catch (err) {
+        console.error("Failed to delete question from bank:", err);
+        throw err;
+    }
+}
+
+

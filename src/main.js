@@ -13,7 +13,10 @@ import {
     logDrillSession,
     fetchFeatureFlags,
     canAccess,
-    autoCaptureToBankIfFailed
+    autoCaptureToBankIfFailed,
+    getQuestionBank,
+    addManualQuestion,
+    deleteQuestionFromBank
 } from './state.js';
 import { generateQuestion, recordAttempt } from './trainer/engine.js';
 import { initializeKeypad, updateKeypadVisibility } from './trainer/keypad.js';
@@ -70,7 +73,21 @@ function mapElements() {
         closeModalBtn: document.getElementById("closeModalBtn"),
         
         // Prompt Card wrapper
-        promptCard: document.querySelector(".prompt-card")
+        promptCard: document.querySelector(".prompt-card"),
+
+        // Question Bank UI Elements
+        qbankCloudNotice: document.getElementById("qbankCloudNotice"),
+        qbankMainContent: document.getElementById("qbankMainContent"),
+        qbankAddDiscipline: document.getElementById("qbankAddDiscipline"),
+        qbankAddTopic: document.getElementById("qbankAddTopic"),
+        qbankAddQuestion: document.getElementById("qbankAddQuestion"),
+        qbankAddAnswer: document.getElementById("qbankAddAnswer"),
+        qbankAddNotes: document.getElementById("qbankAddNotes"),
+        qbankAddSubmitBtn: document.getElementById("qbankAddSubmitBtn"),
+        qbankFilterAll: document.getElementById("qbankFilterAll"),
+        qbankFilterStuck: document.getElementById("qbankFilterStuck"),
+        qbankFilterMastered: document.getElementById("qbankFilterMastered"),
+        qbankListContainer: document.getElementById("qbankListContainer")
     };
 }
 
@@ -102,6 +119,8 @@ function setupNavigation() {
                 renderLearningHubState();
             } else if (tabId === "dashboard") {
                 renderDashboardView();
+            } else if (tabId === "qbank") {
+                renderQBankView();
             }
         });
     });
@@ -257,6 +276,68 @@ function startWorkoutRun() {
     workout.mode = elements.modeSelect.value;
     
     // Check feature access based on feature flags
+    if (workout.mode === "qbank") {
+        if (!supabase || !state.supabaseUser) {
+            alert("Cloud Sign-in Required to practice questions from your Question Bank.");
+            return;
+        }
+        if (!canAccess("question_bank")) {
+            alert("Personal Question Bank is a Premium feature. Please sign in with a paid account.");
+            return;
+        }
+        
+        elements.startWorkoutBtn.disabled = true;
+        elements.startWorkoutBtn.textContent = "Loading Questions...";
+        
+        supabase
+            .from('question_bank')
+            .select('*')
+            .eq('user_id', state.supabaseUser.id)
+            .eq('is_mastered', false)
+            .then(({ data, error }) => {
+                elements.startWorkoutBtn.disabled = false;
+                elements.startWorkoutBtn.textContent = "Start Workout";
+                if (error) {
+                    alert("Failed to load question bank: " + error.message);
+                } else {
+                    workout.qbankPool = data || [];
+                    if (workout.qbankPool.length === 0) {
+                        alert("Your Question Bank is currently empty or all questions are mastered! Add some questions or make mistakes in other drills to populate it.");
+                    } else {
+                        // Start qbank drill
+                        workout.isActive = true;
+                        workout.duration = parseInt(elements.timerSelect.value) || 60;
+                        workout.timeLeft = workout.duration;
+                        workout.correct = 0;
+                        workout.total = 0;
+                        workout.sessionLog = [];
+                        
+                        elements.setupForm.style.display = "none";
+                        elements.workoutArena.style.display = "flex";
+                        elements.answerInput.disabled = false;
+                        elements.submitBtn.disabled = false;
+                        elements.answerInput.value = "";
+                        elements.feedbackDisplay.textContent = "";
+                        elements.feedbackDisplay.className = "feedback-msg";
+                        elements.scoreDisplay.textContent = "SCORE: 0 / 0";
+                        
+                        tickTimerText();
+                        promptNextQuestion();
+                        
+                        workout.timerInterval = setInterval(() => {
+                            workout.timeLeft--;
+                            tickTimerText();
+                            if (workout.timeLeft <= 0) {
+                                endWorkoutRun();
+                            }
+                        }, 1000);
+                    }
+                }
+            });
+        return; // Early return because Supabase fetch is asynchronous
+    }
+    
+    // Check feature access based on feature flags
     if (workout.mode === "tables") {
         const startVal = parseInt(elements.tableStart.value) || 1;
         const endVal = parseInt(elements.tableEnd.value) || 50;
@@ -396,6 +477,27 @@ function checkUserAnswer() {
     const activeMode = activeQuestionData.generatedMode || workout.mode;
     recordAttempt(activeMode, activeQuestionData, isCorrect, val, timeTaken);
     
+    // Update question bank stats on Supabase if practicing in qbank mode
+    if (workout.mode === "qbank" && activeQuestionData.qbankQuestionId) {
+        const qData = activeQuestionData.qbankQuestionData;
+        const newTimesCorrect = qData.times_correct + (isCorrect ? 1 : 0);
+        const newTimesShown = qData.times_shown + 1;
+        const isMasteredNow = isCorrect && (newTimesCorrect >= 3);
+        
+        supabase
+            .from('question_bank')
+            .update({
+                times_shown: newTimesShown,
+                times_correct: newTimesCorrect,
+                is_mastered: isMasteredNow,
+                last_shown_at: new Date().toISOString()
+            })
+            .eq('id', qData.id)
+            .then(({ error }) => {
+                if (error) console.error("Failed to update QBank stats:", error);
+            });
+    }
+    
     // Add to session log
     workout.sessionLog.push({
         question: workout.currentQuestion,
@@ -452,6 +554,24 @@ function skipQuestion() {
     const activeMode = activeQuestionData.generatedMode || workout.mode;
     recordAttempt(activeMode, activeQuestionData, false, "SKIPPED", timeTaken);
     profile.all_time_total++;
+    
+    // Update question bank stats on Supabase if practicing in qbank mode
+    if (workout.mode === "qbank" && activeQuestionData.qbankQuestionId) {
+        const qData = activeQuestionData.qbankQuestionData;
+        const newTimesShown = qData.times_shown + 1;
+        
+        supabase
+            .from('question_bank')
+            .update({
+                times_shown: newTimesShown,
+                is_mastered: false,
+                last_shown_at: new Date().toISOString()
+            })
+            .eq('id', qData.id)
+            .then(({ error }) => {
+                if (error) console.error("Failed to update QBank stats:", error);
+            });
+    }
     
     // Add to session log
     workout.sessionLog.push({
@@ -981,6 +1101,7 @@ function initApplication() {
     setupThemeSwitcher();
     setupLearningHub();
     setupCloudSyncUI();
+    setupQBankHandlers();
     
     // Set default keypad layout
     updateKeypadVisibility(elements.modeSelect.value);
@@ -1192,6 +1313,181 @@ function setupCloudSyncUI() {
                 statusBadge.className = "cloud-badge";
             }
         }
+    });
+}
+
+// ==========================================
+// Question Bank UI & Logic Handlers
+// ==========================================
+
+let qbankCachedList = [];
+let qbankFilterState = "all";
+
+function setupQBankHandlers() {
+    if (!elements.qbankAddDiscipline) return;
+    
+    // Topic dropdown sync
+    elements.qbankAddDiscipline.addEventListener("change", (e) => {
+        const disc = e.target.value;
+        elements.qbankAddTopic.innerHTML = "";
+        if (disc === "tables") {
+            elements.qbankAddTopic.innerHTML = `<option value="multiplication">Multiplication Equation</option>`;
+        } else {
+            elements.qbankAddTopic.innerHTML = `
+                <option value="alphaToNum">Alphabet ➔ Number</option>
+                <option value="numToAlpha">Number ➔ Alphabet</option>
+                <option value="alphaOpposite">Opposite Letters</option>
+            `;
+        }
+    });
+
+    // Form submit action
+    elements.qbankAddSubmitBtn.addEventListener("click", async () => {
+        const disc = elements.qbankAddDiscipline.value;
+        const topic = elements.qbankAddTopic.value;
+        const question = elements.qbankAddQuestion.value.trim();
+        const answer = elements.qbankAddAnswer.value.trim();
+        const notes = elements.qbankAddNotes.value.trim();
+        
+        if (!question || !answer) {
+            alert("Please enter both the Question and Correct Answer.");
+            return;
+        }
+        
+        elements.qbankAddSubmitBtn.disabled = true;
+        elements.qbankAddSubmitBtn.textContent = "Saving...";
+        
+        try {
+            await addManualQuestion(disc, topic, question, answer, notes);
+            elements.qbankAddQuestion.value = "";
+            elements.qbankAddAnswer.value = "";
+            elements.qbankAddNotes.value = "";
+            alert("Question successfully saved to your bank!");
+            await renderQBankView();
+        } catch (err) {
+            alert("Failed to save question: " + err.message);
+        } finally {
+            elements.qbankAddSubmitBtn.disabled = false;
+            elements.qbankAddSubmitBtn.textContent = "Save to Question Bank";
+        }
+    });
+
+    // Filter tabs
+    const setFilter = (filter) => {
+        qbankFilterState = filter;
+        [elements.qbankFilterAll, elements.qbankFilterStuck, elements.qbankFilterMastered].forEach(btn => {
+            if (btn) btn.classList.remove("active");
+        });
+        if (filter === "all" && elements.qbankFilterAll) elements.qbankFilterAll.classList.add("active");
+        if (filter === "stuck" && elements.qbankFilterStuck) elements.qbankFilterStuck.classList.add("active");
+        if (filter === "mastered" && elements.qbankFilterMastered) elements.qbankFilterMastered.classList.add("active");
+        
+        displayQBankList();
+    };
+    
+    if (elements.qbankFilterAll) elements.qbankFilterAll.addEventListener("click", () => setFilter("all"));
+    if (elements.qbankFilterStuck) elements.qbankFilterStuck.addEventListener("click", () => setFilter("stuck"));
+    if (elements.qbankFilterMastered) elements.qbankFilterMastered.addEventListener("click", () => setFilter("mastered"));
+}
+
+export async function renderQBankView() {
+    if (!elements.qbankCloudNotice || !elements.qbankMainContent) return;
+    
+    if (!supabase || !state.supabaseUser) {
+        elements.qbankCloudNotice.style.display = "block";
+        elements.qbankMainContent.style.display = "none";
+        return;
+    }
+    
+    elements.qbankCloudNotice.style.display = "none";
+    elements.qbankMainContent.style.display = "grid";
+    
+    elements.qbankListContainer.innerHTML = `
+        <div class="empty-state">
+            <i class="fa-solid fa-rotate spin"></i> Loading your saved questions...
+        </div>
+    `;
+    
+    qbankCachedList = await getQuestionBank();
+    displayQBankList();
+}
+
+function displayQBankList() {
+    const container = elements.qbankListContainer;
+    if (!container) return;
+    container.innerHTML = "";
+    
+    const filtered = qbankCachedList.filter(q => {
+        if (qbankFilterState === "stuck") return !q.is_mastered;
+        if (qbankFilterState === "mastered") return q.is_mastered;
+        return true;
+    });
+    
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="empty-state">No questions found matching filter.</div>`;
+        return;
+    }
+    
+    filtered.forEach(q => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.borderWidth = "2px";
+        card.style.borderColor = "var(--border)";
+        card.style.marginBottom = "10px";
+        card.style.padding = "15px";
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+        card.style.gap = "8px";
+        card.style.position = "relative";
+        
+        const tagClass = q.source === "auto_capture" ? "cloud-badge active" : "cloud-badge success";
+        const sourceLabel = q.source === "auto_capture" ? "Auto-Captured" : "Manual Entry";
+        
+        const statusClass = q.is_mastered ? "cloud-badge success" : "cloud-badge danger";
+        const statusLabel = q.is_mastered ? "Mastered" : "Stuck";
+        
+        const accuracy = q.times_shown > 0 ? Math.round((q.times_correct / q.times_shown) * 100) : 0;
+        
+        card.innerHTML = `
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <span class="${tagClass}" style="margin:0; font-size:8px; padding:2px 6px;">${sourceLabel}</span>
+                <span class="${statusClass}" style="margin:0; font-size:8px; padding:2px 6px;">${statusLabel}</span>
+            </div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-main); margin-top: 5px;">
+                Question: <span style="font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size:13px; background: var(--bg-dark); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border);">${q.question_text}</span>
+            </div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--text-main);">
+                Answer: <span style="font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size:13px; color: var(--success);">${q.correct_answer}</span>
+            </div>
+            ${q.notes ? `<div style="font-size:11px; color: var(--text-muted); background: var(--bg-dark); padding: 8px; border-radius:4px; border: 1px solid var(--border); font-style: italic;">"${q.notes}"</div>` : ''}
+            <div style="font-size: 11px; color: var(--text-muted); display:flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+                <span>Accuracy: ${accuracy}% (Shown ${q.times_shown} times)</span>
+                <button class="btn btn-danger btn-small delete-qbank-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 11px; display:inline-flex; align-items:center; gap:4px; position:absolute; bottom: 12px; right: 12px;">
+                    <i class="fa-solid fa-trash"></i> Delete
+                </button>
+            </div>
+        `;
+        
+        // Bind delete action
+        const deleteBtn = card.querySelector(".delete-qbank-btn");
+        if (deleteBtn) {
+            deleteBtn.addEventListener("click", async () => {
+                const wipe = confirm("Remove this question from your Question Bank permanently?");
+                if (wipe) {
+                    deleteBtn.disabled = true;
+                    deleteBtn.innerHTML = `<i class="fa-solid fa-rotate spin"></i> Removing...`;
+                    try {
+                        await deleteQuestionFromBank(q.id);
+                        qbankCachedList = qbankCachedList.filter(item => item.id !== q.id);
+                        displayQBankList();
+                    } catch (err) {
+                        alert("Failed to delete question: " + err.message);
+                    }
+                }
+            });
+        }
+        
+        container.appendChild(card);
     });
 }
 

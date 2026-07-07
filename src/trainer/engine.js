@@ -1,5 +1,5 @@
 // Training Engine Module (Alphabet & Multiplication Tables Logic)
-import { getActiveProfile } from '../state.js';
+import { state, getActiveProfile } from '../state.js';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -48,7 +48,28 @@ export function generateQuestion(mode, config = { tableStart: 1, tableEnd: 50 })
         }
     }
     
-    if (activeMode === "tables") {
+    if (activeMode === "qbank") {
+        // --- PERSONAL QUESTION BANK ---
+        const pool = state.currentWorkout.qbankPool || [];
+        if (pool.length === 0) {
+            result.question = "No unmastered questions in bank";
+            result.answer = "0";
+            result.hint = "Add questions in the Question Bank tab first!";
+        } else {
+            // Pick a question using error-biased weights
+            const weights = pool.map(q => {
+                const incorrectCount = Math.max(0, q.times_shown - q.times_correct);
+                return 1 + 3 * incorrectCount; // Error bias factor
+            });
+            const pickedQuestion = weightedRandomPick(pool, weights);
+            
+            result.question = pickedQuestion.question_text;
+            result.answer = pickedQuestion.correct_answer;
+            result.hint = pickedQuestion.notes || `Topic: ${pickedQuestion.topic}`;
+            result.qbankQuestionId = pickedQuestion.id;
+            result.qbankQuestionData = pickedQuestion;
+        }
+    } else if (activeMode === "tables") {
         // --- MULTIPLICATION TABLES ---
         // Compile subset of tables
         const activeTables = [];
