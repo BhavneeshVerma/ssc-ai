@@ -23,7 +23,7 @@ import { renderDashboardView, initDashboard } from './tabs/dashboard/dashboard.j
 import { initTraining, startWorkoutRun } from './tabs/training/training.js';
 import { setupLearningHub, renderLearningHubState } from './tabs/learning/learning.js';
 import { initInsights, renderInsightsTabState } from './tabs/insights/insights.js';
-import { setupCloudSyncUI, refreshProfilesList, initializeProfilesManager } from './tabs/profile/profile.js';
+import { setupCloudSyncUI, refreshProfilesList, initializeProfilesManager, renderCloudAuthState } from './tabs/profile/profile.js';
 
 function renderAvatar(container, profile) {
     if (!container || !profile) return;
@@ -85,6 +85,7 @@ function updateProfileCardWidgets() {
 
 function onActiveProfileChanged() {
     updateProfileCardWidgets();
+    renderCloudAuthState();
     
     // Refresh active tab views
     if (state.currentTab === "analytics" || state.currentTab === "insights") {
@@ -227,12 +228,9 @@ function setupDockAutoHide() {
     window.addEventListener("resize", () => setDockHidden(false));
 }
 
-function getThemeSwitchers() {
-    return Array.from(document.querySelectorAll("#themeSwitcher, #profileThemeSwitcher"));
-}
-
 // Theme Switcher Widget Logic
 function setupThemeSwitcher() {
+    // profileThemeSwitcher
     const switchers = getThemeSwitchers();
     if (switchers.length === 0) return;
     
@@ -247,6 +245,10 @@ function setupThemeSwitcher() {
             });
         });
     });
+}
+
+function getThemeSwitchers() {
+    return Array.from(document.querySelectorAll("#themeSwitcher, #profileThemeSwitcher"));
 }
 
 function applyTheme(theme) {

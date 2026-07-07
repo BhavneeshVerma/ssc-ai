@@ -134,6 +134,28 @@ export function initializeProfilesManager(onActiveProfileChanged) {
 }
 
 // Supabase Cloud Sync UI binding and management
+export function renderCloudAuthState() {
+    const statusBadge = document.getElementById("cloudStatusBadge");
+    const authForm = document.getElementById("cloudAuthForm");
+    const userDetails = document.getElementById("cloudUserDetails");
+    const userEmailDisplay = document.getElementById("cloudUserEmail");
+
+    if (!statusBadge) return;
+
+    if (state.supabaseUser) {
+        statusBadge.innerHTML = '<i class="fa-solid fa-circle-check"></i> Synced';
+        statusBadge.className = "cloud-badge success";
+        if (authForm) authForm.style.display = "none";
+        if (userDetails) userDetails.style.display = "block";
+        if (userEmailDisplay) userEmailDisplay.textContent = state.supabaseUser.email || "Google account";
+    } else {
+        statusBadge.innerHTML = '<i class="fa-solid fa-cloud"></i> Not synced';
+        statusBadge.className = "cloud-badge warning";
+        if (authForm) authForm.style.display = "block";
+        if (userDetails) userDetails.style.display = "none";
+    }
+}
+
 export function setupCloudSyncUI(onActiveProfileChanged) {
     const emailInput = document.getElementById("cloudEmail");
     const passwordInput = document.getElementById("cloudPassword");
@@ -141,6 +163,7 @@ export function setupCloudSyncUI(onActiveProfileChanged) {
     const signUpBtn = document.getElementById("cloudSignUpBtn");
     const signOutBtn = document.getElementById("cloudSignOutBtn");
     const syncBtn = document.getElementById("cloudSyncBtn");
+    const googleSignInBtn = document.getElementById("cloudGoogleSignInBtn");
     
     const authForm = document.getElementById("cloudAuthForm");
     const userDetails = document.getElementById("cloudUserDetails");
@@ -153,7 +176,28 @@ export function setupCloudSyncUI(onActiveProfileChanged) {
             statusBadge.className = "cloud-badge warning";
         }
         if (authForm) authForm.style.display = "none";
+        if (googleSignInBtn) googleSignInBtn.style.display = "none";
         return;
+    }
+
+    if (googleSignInBtn) {
+        googleSignInBtn.addEventListener("click", async () => {
+            googleSignInBtn.disabled = true;
+            googleSignInBtn.innerHTML = '<i class="fa-brands fa-google"></i> Opening Google...';
+
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: window.location.origin + window.location.pathname
+                }
+            });
+
+            if (error) {
+                googleSignInBtn.disabled = false;
+                googleSignInBtn.innerHTML = '<i class="fa-brands fa-google"></i> Continue with Google';
+                alert("Google sign-in failed: " + error.message);
+            }
+        });
     }
     
     // Wire click events
@@ -233,32 +277,19 @@ export function setupCloudSyncUI(onActiveProfileChanged) {
     
     // Status event handler
     window.addEventListener('cloud-sync-changed', (e) => {
-        const { status, user } = e.detail;
+        const { status } = e.detail;
         
-        if (user) {
-            if (authForm) authForm.style.display = "none";
-            if (userDetails) userDetails.style.display = "block";
-            if (userEmailDisplay) userEmailDisplay.textContent = user.email;
-            
-            if (statusBadge) {
-                if (status === 'syncing') {
-                    statusBadge.innerHTML = `<i class="fa-solid fa-rotate spin"></i> Syncing...`;
-                    statusBadge.className = "cloud-badge active";
-                } else if (status === 'synced') {
-                    statusBadge.innerHTML = `<i class="fa-solid fa-circle-check"></i> Synced to Cloud`;
-                    statusBadge.className = "cloud-badge success";
-                } else if (status === 'error') {
-                    statusBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Sync Error`;
-                    statusBadge.className = "cloud-badge danger";
-                }
-            }
-        } else {
-            if (authForm) authForm.style.display = "block";
-            if (userDetails) userDetails.style.display = "none";
-            if (statusBadge) {
-                statusBadge.innerHTML = `<i class="fa-solid fa-circle-nodes"></i> Ready to Connect`;
-                statusBadge.className = "cloud-badge";
-            }
+        renderCloudAuthState();
+        
+        if (status === 'syncing' && statusBadge) {
+            statusBadge.innerHTML = `<i class="fa-solid fa-rotate spin"></i> Syncing...`;
+            statusBadge.className = "cloud-badge active";
+        } else if (status === 'error' && statusBadge) {
+            statusBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Sync Error`;
+            statusBadge.className = "cloud-badge danger";
         }
     });
+
+    // Run initial render of auth state
+    renderCloudAuthState();
 }

@@ -132,8 +132,8 @@
 
     .profile-creator-card { order: 1; }
     .profile-list-card { order: 2; }
-    .profile-theme-card { order: 3; }
-    .cloud-card { order: 4; }
+    .cloud-card { order: 3; }
+    .profile-theme-card { order: 4; }
 
     .profile-card {
         align-items: flex-start;
@@ -177,4 +177,15 @@
     .profile-theme-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
+
+.cloud-google-btn {
+    background: #ffffff;
+    color: #111111;
+    border-color: var(--border);
+    margin-bottom: 12px;
+}
+
+.cloud-google-btn:hover {
+    background: #f5f5f5;
 }
