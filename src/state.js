@@ -3,6 +3,73 @@ import { supabase } from './supabaseClient.js';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+export function getAvatarInitials(name) {
+    const value = (name || "").trim();
+    if (!value) return "??";
+
+    const parts = value
+        .replace(/[^a-zA-Z0-9\s]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean);
+
+    if (parts.length === 0) return "??";
+    if (parts.length === 1) {
+        const word = parts[0].slice(0, 2).toUpperCase();
+        return word.length === 1 ? `${word}${word}` : word;
+    }
+
+    return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+}
+
+function createWrongCounts() {
+    const counts = {};
+    for (let i = 0; i < ALPHABET.length; i++) {
+        counts[ALPHABET[i]] = 0;
+    }
+    return counts;
+}
+
+function createTableWrongCounts() {
+    const counts = {};
+    for (let t = 1; t <= 50; t++) {
+        counts[`Table ${t}`] = 0;
+    }
+    return counts;
+}
+
+function normalizeProfileRecord(profile, fallbackName = "") {
+    const normalized = profile && typeof profile === "object" ? profile : {};
+    const resolvedName = normalized.name || fallbackName || "Guest Ninja";
+    const wrongCounts = normalized.wrong_counts && typeof normalized.wrong_counts === "object"
+        ? normalized.wrong_counts
+        : {};
+    const tableWrongCounts = normalized.table_wrong_counts && typeof normalized.table_wrong_counts === "object"
+        ? normalized.table_wrong_counts
+        : {};
+    const detailedMistakes = normalized.detailed_mistakes && typeof normalized.detailed_mistakes === "object"
+        ? normalized.detailed_mistakes
+        : {};
+
+    normalized.name = resolvedName;
+    normalized.avatarUrl = typeof normalized.avatarUrl === "string" && normalized.avatarUrl.trim()
+        ? normalized.avatarUrl.trim()
+        : null;
+    normalized.avatarInitials = typeof normalized.avatarInitials === "string" && normalized.avatarInitials.trim()
+        ? normalized.avatarInitials.trim().toUpperCase()
+        : getAvatarInitials(resolvedName);
+    normalized.wrong_counts = { ...createWrongCounts(), ...wrongCounts };
+    normalized.table_wrong_counts = { ...createTableWrongCounts(), ...tableWrongCounts };
+    normalized.detailed_mistakes = {
+        tables: { ...(detailedMistakes.tables && typeof detailedMistakes.tables === "object" ? detailedMistakes.tables : {}) },
+        alpha: { ...(detailedMistakes.alpha && typeof detailedMistakes.alpha === "object" ? detailedMistakes.alpha : {}) }
+    };
+    normalized.streak = Number.isFinite(normalized.streak) ? normalized.streak : 0;
+    normalized.today_count = Number.isFinite(normalized.today_count) ? normalized.today_count : 0;
+    normalized.last_active_date = typeof normalized.last_active_date === "string" ? normalized.last_active_date : "";
+
+    return normalized;
+}
+
 // Centralized state container
 export const state = {
     profiles: {},
@@ -51,24 +118,7 @@ export function loadStateFromStorage() {
     
     // Ensure all profiles have detailed mistakes tracking and daily stats
     for (const pid in state.profiles) {
-        if (!state.profiles[pid].detailed_mistakes) {
-            state.profiles[pid].detailed_mistakes = { tables: {}, alpha: {} };
-        }
-        if (!state.profiles[pid].detailed_mistakes.tables) {
-            state.profiles[pid].detailed_mistakes.tables = {};
-        }
-        if (!state.profiles[pid].detailed_mistakes.alpha) {
-            state.profiles[pid].detailed_mistakes.alpha = {};
-        }
-        if (state.profiles[pid].streak === undefined) {
-            state.profiles[pid].streak = 0;
-        }
-        if (state.profiles[pid].today_count === undefined) {
-            state.profiles[pid].today_count = 0;
-        }
-        if (state.profiles[pid].last_active_date === undefined) {
-            state.profiles[pid].last_active_date = "";
-        }
+        state.profiles[pid] = normalizeProfileRecord(state.profiles[pid], state.profiles[pid]?.name);
     }
 
     // Set active profile
@@ -77,6 +127,8 @@ export function loadStateFromStorage() {
     } else {
         state.activeProfileId = Object.keys(state.profiles)[0];
     }
+
+    saveStateToStorage();
 }
 
 // Save profiles to browser local storage
@@ -91,22 +143,14 @@ export function saveStateToStorage() {
 export function createProfile(name, customId = null) {
     const profileId = customId || "user_" + Date.now();
     
-    const wrong_counts = {};
-    for (let i = 0; i < ALPHABET.length; i++) {
-        wrong_counts[ALPHABET[i]] = 0;
-    }
-    
-    const table_wrong_counts = {};
-    for (let t = 1; t <= 50; t++) {
-        table_wrong_counts[`Table ${t}`] = 0;
-    }
-    
     state.profiles[profileId] = {
         name: name,
+        avatarUrl: null,
+        avatarInitials: getAvatarInitials(name),
         all_time_correct: 0,
         all_time_total: 0,
-        wrong_counts: wrong_counts,
-        table_wrong_counts: table_wrong_counts,
+        wrong_counts: createWrongCounts(),
+        table_wrong_counts: createTableWrongCounts(),
         detailed_mistakes: { tables: {}, alpha: {} },
         streak: 0,
         today_count: 0,
@@ -260,16 +304,24 @@ export async function loadActiveProfileFromCloud() {
         
         if (data) {
             const profileId = user.id;
+            const localProfile = state.profiles[profileId] || state.profiles[state.activeProfileId] || {};
+            const mergedProfile = normalizeProfileRecord({
+                ...localProfile,
+                ...data,
+                name: data.display_name || localProfile.name || "Guest Ninja",
+                avatarUrl: data.avatarUrl ?? localProfile.avatarUrl ?? null,
+                avatarInitials: data.avatarInitials ?? localProfile.avatarInitials ?? getAvatarInitials(data.display_name || localProfile.name || "Guest Ninja"),
+                wrong_counts: data.wrong_counts ?? localProfile.wrong_counts ?? {},
+                table_wrong_counts: data.table_wrong_counts ?? localProfile.table_wrong_counts ?? {},
+                detailed_mistakes: data.detailed_mistakes ?? localProfile.detailed_mistakes ?? {},
+                streak: data.streak ?? localProfile.streak ?? 0,
+                today_count: data.today_count ?? localProfile.today_count ?? 0,
+                last_active_date: data.last_active_date ?? localProfile.last_active_date ?? ""
+            }, data.display_name || localProfile.name || "Guest Ninja");
             state.profiles[profileId] = {
-                name: data.display_name,
-                all_time_correct: data.all_time_correct,
-                all_time_total: data.all_time_total,
-                streak: data.streak,
-                today_count: data.today_count,
-                last_active_date: data.last_active_date,
-                wrong_counts: data.wrong_counts,
-                table_wrong_counts: data.table_wrong_counts,
-                detailed_mistakes: data.detailed_mistakes
+                ...mergedProfile,
+                all_time_correct: Number.isFinite(data.all_time_correct) ? data.all_time_correct : localProfile.all_time_correct || 0,
+                all_time_total: Number.isFinite(data.all_time_total) ? data.all_time_total : localProfile.all_time_total || 0
             };
             state.activeProfileId = profileId;
             localStorage.setItem("trainer_active_profile", profileId);
@@ -477,5 +529,3 @@ export async function deleteQuestionFromBank(questionId) {
         throw err;
     }
 }
-
-

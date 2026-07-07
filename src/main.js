@@ -12,6 +12,7 @@ import {
     loadStateFromStorage, 
     saveStateToStorage, 
     getActiveProfile, 
+    getAvatarInitials,
     syncActiveProfileToCloud,
     loadActiveProfileFromCloud,
     fetchFeatureFlags
@@ -24,6 +25,33 @@ import { setupLearningHub, renderLearningHubState } from './tabs/learning/learni
 import { initInsights, renderInsightsTabState } from './tabs/insights/insights.js';
 import { setupCloudSyncUI, refreshProfilesList, initializeProfilesManager } from './tabs/profile/profile.js';
 
+function renderAvatar(container, profile) {
+    if (!container || !profile) return;
+
+    const avatarUrl = typeof profile.avatarUrl === 'string' && profile.avatarUrl.trim()
+        ? profile.avatarUrl.trim()
+        : null;
+    const initials = profile.avatarInitials || getAvatarInitials(profile.name);
+
+    container.innerHTML = "";
+    container.classList.toggle("has-image", Boolean(avatarUrl));
+
+    if (avatarUrl) {
+        const img = document.createElement("img");
+        img.src = avatarUrl;
+        img.alt = `${profile.name} avatar`;
+        img.loading = "lazy";
+        img.referrerPolicy = "no-referrer";
+        container.appendChild(img);
+        return;
+    }
+
+    const fallback = document.createElement("span");
+    fallback.className = "avatar-initials";
+    fallback.textContent = initials;
+    container.appendChild(fallback);
+}
+
 function updateProfileCardWidgets() {
     const profile = getActiveProfile();
     if (!profile) return;
@@ -31,8 +59,10 @@ function updateProfileCardWidgets() {
     // Update Desktop Widget
     const nameEl = document.getElementById("currentProfileName");
     const statsEl = document.getElementById("currentProfileStats");
+    const avatarEl = document.getElementById("currentProfileAvatar");
     
     if (nameEl) nameEl.textContent = profile.name;
+    renderAvatar(avatarEl, profile);
     
     if (statsEl) {
         if (profile.all_time_total > 0) {
@@ -45,7 +75,12 @@ function updateProfileCardWidgets() {
     
     // Update Mobile Header Widget
     const mobileNameEl = document.getElementById("mobileProfileName");
+    const mobileAvatarEl = document.getElementById("mobileProfileAvatar");
     if (mobileNameEl) mobileNameEl.textContent = profile.name;
+    renderAvatar(mobileAvatarEl, profile);
+
+    const dockAvatarEl = document.getElementById("dockProfileAvatar");
+    renderAvatar(dockAvatarEl, profile);
 }
 
 function onActiveProfileChanged() {
@@ -166,6 +201,36 @@ function setupThemeSwitcher() {
     });
 }
 
+function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+
+    const register = () => {
+        navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((error) => {
+            console.warn('Service worker registration failed:', error);
+        });
+    };
+
+    if (document.readyState === 'complete') {
+        register();
+    } else {
+        window.addEventListener('load', register, { once: true });
+    }
+}
+
+function updateInstallState() {
+    const displayModes = [
+        '(display-mode: standalone)',
+        '(display-mode: fullscreen)',
+        '(display-mode: minimal-ui)'
+    ];
+    const isStandalone = displayModes.some((query) => window.matchMedia(query).matches) || Boolean(navigator.standalone);
+    const root = document.documentElement;
+
+    root.classList.toggle('is-installed-app', isStandalone);
+    root.dataset.displayMode = isStandalone ? 'standalone' : 'browser';
+    document.body.dataset.displayMode = root.dataset.displayMode;
+}
+
 function applyTheme(theme) {
     const themeSwitcher = document.getElementById("themeSwitcher");
     if (themeSwitcher) {
@@ -206,6 +271,9 @@ function initApplication() {
     initializeProfilesManager(onActiveProfileChanged);
     setupCloudSyncUI(onActiveProfileChanged);
     setupThemeSwitcher();
+    registerServiceWorker();
+    updateInstallState();
+    updateProfileCardWidgets();
 
     // Custom event to sync profile changes from training runs securely
     window.addEventListener('active-profile-data-updated', () => {

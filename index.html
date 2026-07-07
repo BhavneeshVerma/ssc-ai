@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content, viewport-fit=cover">
     <title>DRILL - Speed & Recall Trainer</title>
+    <meta name="theme-color" content="#0D0D0D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="icon" href="./app-icon.svg" type="image/svg+xml">
     <!-- Google Fonts: Space Grotesk, DM Sans, JetBrains Mono, Outfit, Fraunces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +27,7 @@
             </div>
             
             <div class="profile-widget" id="activeProfileWidget">
-                <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                <div class="profile-avatar profile-avatar--sidebar" id="currentProfileAvatar"><span class="avatar-initials">GN</span></div>
                 <div class="profile-info">
                     <div class="profile-name" id="currentProfileName">Guest User</div>
                     <div class="profile-tag" id="currentProfileStats">Accuracy: --</div>
@@ -61,7 +67,7 @@
             </div>
             <div class="mobile-profile-widget" id="mobileActiveProfileBadge">
                 <span id="mobileProfileName">Guest User</span>
-                <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                <div class="profile-avatar profile-avatar--mobile" id="mobileProfileAvatar"><span class="avatar-initials">GN</span></div>
             </div>
         </header>
 
@@ -86,7 +92,7 @@
                 <span>Insights</span>
             </button>
             <button class="dock-btn" data-tab="profile">
-                <i class="fa-solid fa-user-ninja"></i>
+                <div class="profile-avatar profile-avatar--dock" id="dockProfileAvatar"><span class="avatar-initials">GN</span></div>
                 <span>Profile</span>
             </button>
         </nav>

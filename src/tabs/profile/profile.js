@@ -4,6 +4,7 @@ import {
     createProfile, 
     deleteProfile, 
     saveStateToStorage,
+    getAvatarInitials,
     syncActiveProfileToCloud,
     loadActiveProfileFromCloud
 } from '../../state.js';
@@ -17,6 +18,27 @@ function escapeHTML(str) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+}
+
+function renderAvatarMarkup(profile) {
+    const avatarUrl = typeof profile.avatarUrl === "string" && profile.avatarUrl.trim()
+        ? profile.avatarUrl.trim()
+        : null;
+    const initials = profile.avatarInitials || getAvatarInitials(profile.name);
+
+    if (avatarUrl) {
+        return `
+            <div class="profile-avatar profile-avatar--card has-image">
+                <img src="${escapeHTML(avatarUrl)}" alt="${escapeHTML(profile.name)} avatar" loading="lazy" referrerpolicy="no-referrer">
+            </div>
+        `;
+    }
+
+    return `
+        <div class="profile-avatar profile-avatar--card">
+            <span class="avatar-initials">${escapeHTML(initials)}</span>
+        </div>
+    `;
 }
 
 export function refreshProfilesList(onActiveProfileChanged) {
@@ -37,9 +59,9 @@ export function refreshProfilesList(onActiveProfileChanged) {
         div.className = `profile-card ${isActive ? 'active-profile' : ''}`;
         
         div.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
-                <div>
+            <div class="profile-card-main">
+                ${renderAvatarMarkup(profile)}
+                <div class="profile-card-copy">
                     <div class="profile-card-name">${escapeHTML(profile.name)} ${isActive ? '<span style="color: var(--primary); font-size:10px; font-weight: bold;">(Active)</span>' : ''}</div>
                     <div class="profile-card-stats">Accuracy: ${accuracy} | Total Attempts: ${profile.all_time_total}</div>
                 </div>

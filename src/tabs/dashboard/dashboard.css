@@ -34,7 +34,7 @@
 
 .dashboard-stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 14px;
     margin-bottom: 20px;
 }
@@ -94,7 +94,7 @@
 
 .dashboard-zones-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
     margin-bottom: 20px;
 }
@@ -154,7 +154,7 @@
 
 .dashboard-actions {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 12px;
 }
 
@@ -175,6 +175,7 @@
     gap: 12px;
     width: 100%;
     text-align: left;
+    min-width: 0;
 }
 
 .dash-action-btn:hover {
@@ -188,8 +189,37 @@
 
 .dash-action-btn i { font-size: 14px; flex-shrink: 0; }
 
+.dash-action-btn > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.dash-action-btn > div > div:first-child {
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.2;
+    text-transform: none;
+}
+
+.dash-action-btn > div > div:last-child {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: none;
+    font-weight: 400;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
 .dash-action-btn .action-arrow {
     margin-left: auto;
     font-size: 16px;
     font-family: 'JetBrains Mono', monospace;
+}
+
+@media (max-width: 768px) {
+    .dashboard-stats-grid,
+    .dashboard-zones-grid,
+    .dashboard-actions {
+        grid-template-columns: 1fr;
+    }
 }
