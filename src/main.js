@@ -227,20 +227,44 @@ function setupDockAutoHide() {
     window.addEventListener("resize", () => setDockHidden(false));
 }
 
+function getThemeSwitchers() {
+    return Array.from(document.querySelectorAll("#themeSwitcher, #profileThemeSwitcher"));
+}
+
 // Theme Switcher Widget Logic
 function setupThemeSwitcher() {
-    const themeSwitcher = document.getElementById("themeSwitcher");
-    if (!themeSwitcher) return;
+    const switchers = getThemeSwitchers();
+    if (switchers.length === 0) return;
     
     const savedTheme = localStorage.getItem("trainer_theme") || "dark";
     applyTheme(savedTheme);
     
-    themeSwitcher.querySelectorAll(".theme-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const theme = btn.getAttribute("data-theme");
-            applyTheme(theme);
+    switchers.forEach(switcher => {
+        switcher.querySelectorAll(".theme-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const theme = btn.getAttribute("data-theme");
+                applyTheme(theme);
+            });
         });
     });
+}
+
+function applyTheme(theme) {
+    getThemeSwitchers().forEach(switcher => {
+        switcher.querySelectorAll(".theme-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.getAttribute("data-theme") === theme);
+        });
+    });
+    
+    // Switch CSS class on document body
+    document.body.classList.remove("theme-light", "theme-dark", "theme-sepia", "theme-neon");
+    document.body.classList.add(`theme-${theme}`);
+    localStorage.setItem("trainer_theme", theme);
+    
+    // Redraw analytics chart if active to match theme colors
+    if (state.currentTab === "insights") {
+        renderInsightsTabState();
+    }
 }
 
 function registerServiceWorker() {
@@ -271,29 +295,6 @@ function updateInstallState() {
     root.classList.toggle('is-installed-app', isStandalone);
     root.dataset.displayMode = isStandalone ? 'standalone' : 'browser';
     document.body.dataset.displayMode = root.dataset.displayMode;
-}
-
-function applyTheme(theme) {
-    const themeSwitcher = document.getElementById("themeSwitcher");
-    if (themeSwitcher) {
-        themeSwitcher.querySelectorAll(".theme-btn").forEach(btn => {
-            if (btn.getAttribute("data-theme") === theme) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-    }
-    
-    // Switch CSS class on document body
-    document.body.classList.remove("theme-light", "theme-dark", "theme-sepia", "theme-neon");
-    document.body.classList.add(`theme-${theme}`);
-    localStorage.setItem("trainer_theme", theme);
-    
-    // Redraw analytics chart if active to match theme colors
-    if (state.currentTab === "insights") {
-        renderInsightsTabState();
-    }
 }
 
 function initApplication() {

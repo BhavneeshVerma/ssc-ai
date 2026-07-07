@@ -132,7 +132,8 @@
 
     .profile-creator-card { order: 1; }
     .profile-list-card { order: 2; }
-    .cloud-card { order: 3; }
+    .profile-theme-card { order: 3; }
+    .cloud-card { order: 4; }
 
     .profile-card {
         align-items: flex-start;
@@ -142,5 +143,38 @@
         width: 100%;
         justify-content: flex-start;
         margin-left: 0;
+    }
+}
+
+.profile-theme-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.profile-theme-grid .theme-btn {
+    min-height: 48px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+}
+
+.profile-theme-grid .theme-btn span {
+    font-size: 10px;
+    line-height: 1;
+}
+
+@media (max-width: 480px) {
+    .profile-theme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
