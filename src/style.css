@@ -1683,3 +1683,156 @@ input:focus, select:focus { border-color: var(--primary); }
     .key-btn { height: 42px; font-size: 13px; }
     .mnemonic-table-list { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* =====================================================
+   VISUAL ANSWER DISPLAY (Shadcn-like styling)
+   ===================================================== */
+.visual-answer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 18px auto 0 auto;
+    padding: 10px 16px;
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    min-height: 48px;
+    max-width: 320px;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    cursor: text;
+    transition: border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+.visual-answer-container.focused {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.visual-answer-placeholder {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.15s ease;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.visual-answer-text {
+    color: var(--text-main);
+    z-index: 1;
+    letter-spacing: 0.05em;
+    min-width: 1px;
+}
+
+.visual-answer-caret {
+    display: inline-block;
+    width: 2px;
+    height: 22px;
+    background-color: var(--primary);
+    margin-left: 4px;
+    animation: pulse-caret 1s infinite;
+    z-index: 1;
+    opacity: 0;
+}
+
+.visual-answer-container.focused .visual-answer-caret {
+    opacity: 1;
+}
+
+@keyframes pulse-caret {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Hidden capture input style */
+.hidden-capture-input {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    left: -9999px !important;
+    top: -9999px !important;
+}
+
+/* =====================================================
+   WORKOUT ACTIVE LAYOUT OPTIMIZATION (MOBILE & GENERAL)
+   ===================================================== */
+body.workout-running .input-area {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+
+/* Hide tab header and sidebar during workout on mobile to save space */
+@media (max-width: 768px) {
+    body.workout-running .app-sidebar {
+        display: none !important;
+    }
+    body.workout-running .app-main {
+        padding: 10px 10px 24px 10px !important;
+        height: 100vh;
+        overflow: hidden; /* Prevent page scroll */
+        display: flex;
+        flex-direction: column;
+    }
+    body.workout-running .tab-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    body.workout-running .tab-header {
+        display: none !important;
+    }
+    body.workout-running .grid-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+        justify-content: space-between;
+    }
+    body.workout-running .card {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    body.workout-running .prompt-card {
+        border: 2px solid var(--border) !important;
+        background: var(--bg-panel) !important;
+        padding: 24px 16px !important;
+        margin-top: 10px;
+    }
+    body.workout-running .panel-keypad {
+        margin-top: auto;
+        padding-bottom: 12px !important;
+    }
+    body.workout-running .panel-keypad .panel-title,
+    body.workout-running .panel-keypad .panel-description {
+        display: none !important;
+    }
+    body.workout-running .keypad-grid {
+        gap: 6px;
+    }
+    body.workout-running .key-btn {
+        height: 48px; /* Slightly larger key height on mobile for readability */
+        font-size: 15px;
+    }
+    body.workout-running .prompt-text {
+        font-size: 64px;
+    }
+}
+

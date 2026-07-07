@@ -75,6 +75,11 @@ function mapElements() {
         // Prompt Card wrapper
         promptCard: document.querySelector(".prompt-card"),
 
+        // Visual Answer Display Elements
+        visualAnswerContainer: document.getElementById("visualAnswerContainer"),
+        visualAnswerPlaceholder: document.getElementById("visualAnswerPlaceholder"),
+        visualAnswerText: document.getElementById("visualAnswerText"),
+
         // Question Bank UI Elements
         qbankCloudNotice: document.getElementById("qbankCloudNotice"),
         qbankMainContent: document.getElementById("qbankMainContent"),
@@ -89,6 +94,29 @@ function mapElements() {
         qbankFilterMastered: document.getElementById("qbankFilterMastered"),
         qbankListContainer: document.getElementById("qbankListContainer")
     };
+}
+
+function updateVisualAnswer() {
+    if (!elements.visualAnswerText || !elements.visualAnswerPlaceholder) return;
+    const val = elements.answerInput.value;
+    elements.visualAnswerText.textContent = val;
+    if (val.length > 0) {
+        elements.visualAnswerPlaceholder.style.display = "none";
+    } else {
+        elements.visualAnswerPlaceholder.style.display = "inline";
+    }
+}
+
+function onWorkoutStart() {
+    document.body.classList.add("workout-running");
+    elements.answerInput.classList.add("hidden-capture-input");
+    updateVisualAnswer();
+}
+
+function onWorkoutEnd() {
+    document.body.classList.remove("workout-running");
+    elements.answerInput.classList.remove("hidden-capture-input");
+    updateVisualAnswer();
 }
 
 // Bind tabs switching navigation
@@ -317,6 +345,7 @@ function startWorkoutRun() {
                         elements.answerInput.disabled = false;
                         elements.submitBtn.disabled = false;
                         elements.answerInput.value = "";
+                        onWorkoutStart();
                         elements.feedbackDisplay.textContent = "";
                         elements.feedbackDisplay.className = "feedback-msg";
                         elements.scoreDisplay.textContent = "SCORE: 0 / 0";
@@ -403,6 +432,7 @@ function startWorkoutRun() {
     elements.answerInput.disabled = false;
     elements.submitBtn.disabled = false;
     elements.answerInput.value = "";
+    onWorkoutStart();
     elements.feedbackDisplay.textContent = "";
     elements.feedbackDisplay.className = "feedback-msg";
     elements.scoreDisplay.textContent = "SCORE: 0 / 0";
@@ -431,6 +461,7 @@ let activeQuestionData = {};
 function promptNextQuestion() {
     const workout = state.currentWorkout;
     elements.answerInput.value = "";
+    updateVisualAnswer();
     
     let config = {
         tableStart: elements.tableStart.value,
@@ -457,7 +488,7 @@ function promptNextQuestion() {
     }
     
     currentQuestionStartTime = Date.now();
-    elements.answerInput.focus();
+    elements.answerInput.focus({ preventScroll: true });
 }
 
 function checkUserAnswer() {
@@ -620,6 +651,7 @@ function stopWorkoutRun(interrupted = false) {
     elements.setupForm.style.display = "block";
     elements.answerInput.disabled = true;
     elements.submitBtn.disabled = true;
+    onWorkoutEnd();
     
     // Make sure keypad is set to configuration mode default state
     updateKeypadVisibility(elements.modeSelect.value);
@@ -1118,8 +1150,30 @@ function initApplication() {
         if (e.key === "Enter") checkUserAnswer();
     });
     
+    // Visual answer container focus click behavior
+    if (elements.visualAnswerContainer) {
+        elements.visualAnswerContainer.addEventListener("click", () => {
+            if (state.currentWorkout.isActive) {
+                elements.answerInput.focus({ preventScroll: true });
+            }
+        });
+    }
+    
+    elements.answerInput.addEventListener("focus", () => {
+        if (elements.visualAnswerContainer) {
+            elements.visualAnswerContainer.classList.add("focused");
+        }
+    });
+    
+    elements.answerInput.addEventListener("blur", () => {
+        if (elements.visualAnswerContainer) {
+            elements.visualAnswerContainer.classList.remove("focused");
+        }
+    });
+    
     // Instant Submit input checker listener
     elements.answerInput.addEventListener("input", () => {
+        updateVisualAnswer();
         if (instantSubmit && state.currentWorkout.isActive) {
             const val = elements.answerInput.value.trim().toUpperCase();
             const answer = state.currentWorkout.currentAnswer.toUpperCase();

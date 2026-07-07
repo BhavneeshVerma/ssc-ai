@@ -13,6 +13,9 @@ export function initializeKeypad(inputElement, submitCallback) {
         const keyBtn = e.target.closest(".key-btn");
         if (!keyBtn) return;
         
+        // Prevent default touch/click browser reactions (keeps browser soft keyboard suppressed)
+        e.preventDefault();
+        
         const key = keyBtn.getAttribute("data-key");
         
         // Visual button press animation
@@ -34,12 +37,14 @@ export function initializeKeypad(inputElement, submitCallback) {
             inputElement.dispatchEvent(new Event('input', { bubbles: true }));
         }
         
-        // Focus the input to keep blinking cursor active
-        inputElement.focus();
+        // Focus the input to keep blinking cursor active on visual display.
+        // preventScroll prevents viewport jumping.
+        inputElement.focus({ preventScroll: true });
     };
     
-    numpad.addEventListener("click", keypadPressHandler);
-    alphapad.addEventListener("click", keypadPressHandler);
+    // Listen to pointerdown for instant, zero-delay touch/mouse clicks
+    numpad.addEventListener("pointerdown", keypadPressHandler);
+    alphapad.addEventListener("pointerdown", keypadPressHandler);
 }
 
 // Adjust virtual keypad layout depending on workout mode

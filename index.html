@@ -243,10 +243,15 @@
                             <div class="prompt-card">
                                 <p class="prompt-hint" id="promptHint">What is the numeric position of the letter?</p>
                                 <div class="prompt-text" id="promptQuestion">G</div>
+                                <div class="visual-answer-container" id="visualAnswerContainer">
+                                    <span class="visual-answer-placeholder" id="visualAnswerPlaceholder">Type or tap answer...</span>
+                                    <span class="visual-answer-text" id="visualAnswerText"></span>
+                                    <span class="visual-answer-caret"></span>
+                                </div>
                             </div>
 
                             <div class="input-area">
-                                <input type="text" id="answerInput" autocomplete="off" placeholder="Type answer here..." disabled>
+                                <input type="text" id="answerInput" autocomplete="off" placeholder="Type answer here..." disabled inputmode="none">
                                 <button id="submitBtn" class="btn btn-accent" disabled>SUBMIT</button>
                             </div>
 
