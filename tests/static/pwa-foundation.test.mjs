@@ -126,3 +126,48 @@ test('service worker provides offline fallback response', () => {
   assert.match(sw, /response\.ok/);
   assert.match(sw, /cache\.put\(event\.request, response\.clone\(\)\)/);
 });
+
+test('profile tab owns theme selection controls', () => {
+  const html = readText('index.html');
+  const main = readText('src/main.js');
+  const profileCss = readText('src/tabs/profile/profile.css');
+
+  assert.match(html, /id=["']profileThemeSwitcher["']/);
+  assert.match(html, /data-theme=["']dark["']/);
+  assert.match(html, /data-theme=["']light["']/);
+  assert.match(html, /data-theme=["']sepia["']/);
+  assert.match(html, /data-theme=["']neon["']/);
+  assert.match(main, /setupThemeSwitcher\([\s\S]*profileThemeSwitcher/);
+  assert.match(profileCss, /\.profile-theme-card/);
+});
+
+test('learning tab has mobile-safe readable layouts', () => {
+  const css = readText('src/tabs/learning/learning.css');
+
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.learning-tabs/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*overflow-x:\s*hidden/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.az-position-grid/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.mnemonic-table-list/);
+});
+
+test('insights separates analytics and question bank on mobile', () => {
+  const html = readText('index.html');
+  const css = readText('src/tabs/insights/insights.css');
+  const js = readText('src/tabs/insights/insights.js');
+
+  assert.match(html, /data-i-tab=["']analytics["']/);
+  assert.match(html, /data-i-tab=["']qbank["']/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.insights-tab-bar/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.qbank-list-container/);
+  assert.doesNotMatch(js, /style\.display\s*=\s*activeInsightsSubTab === "analytics" \? "block" : "grid"/);
+});
+
+test('profile cloud sync exposes Google OAuth sign-in', () => {
+  const html = readText('index.html');
+  const profile = readText('src/tabs/profile/profile.js');
+
+  assert.match(html, /id=["']cloudGoogleSignInBtn["']/);
+  assert.match(profile, /signInWithOAuth\(\{\s*provider:\s*["']google["']/);
+  assert.match(profile, /redirectTo:\s*window\.location\.origin/);
+});
