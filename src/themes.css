@@ -110,3 +110,113 @@
     --chart-accent: #9B5CFF;
     --accent-glow:  rgba(155, 92, 255, 0.25);
 }
+
+/* =====================================================
+   NEUTRAL APPEARANCE CUSTOMIZATION LAYER
+   -----------------------------------------------------
+   This is intentionally NOT a design direction.
+   It is only a modular control surface so any future theme
+   can choose its own aesthetic.
+
+   A theme can override these variables, and Account settings
+   can override them at runtime through JS/localStorage.
+   ===================================================== */
+
+:root {
+    /* Background controls */
+    --custom-bg-image: none;
+    --custom-bg-position: center center;
+    --custom-bg-size: cover;
+    --custom-bg-repeat: no-repeat;
+    --custom-bg-opacity: 0;
+    --custom-bg-blur: 0px;
+    --custom-bg-scale: 1.04;
+    --custom-bg-dim: 0;
+    --custom-bg-dim-color: 0, 0, 0;
+
+    /* Surface controls */
+    --main-surface-opacity: 1;
+    --sidebar-surface-opacity: 1;
+    --card-surface-opacity: 1;
+    --surface-blur: 0px;
+
+    /* Optional layout controls */
+    --theme-radius: 0px;
+    --theme-card-border-width: 2px;
+}
+
+/* RGB channels are separate so opacity can be controlled safely. */
+.theme-light {
+    --bg-dark-rgb: 239, 237, 228;
+    --bg-panel-rgb: 255, 255, 255;
+    --sidebar-bg-rgb: 17, 17, 17;
+}
+
+.theme-dark {
+    --bg-dark-rgb: 13, 13, 13;
+    --bg-panel-rgb: 22, 22, 22;
+    --sidebar-bg-rgb: 13, 13, 13;
+}
+
+.theme-sepia {
+    --bg-dark-rgb: 237, 227, 206;
+    --bg-panel-rgb: 247, 240, 224;
+    --sidebar-bg-rgb: 44, 31, 15;
+}
+
+.theme-neon {
+    --bg-dark-rgb: 5, 5, 16;
+    --bg-panel-rgb: 12, 12, 34;
+    --sidebar-bg-rgb: 5, 5, 16;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+body::before {
+    z-index: -2;
+    background-image: var(--custom-bg-image);
+    background-position: var(--custom-bg-position);
+    background-size: var(--custom-bg-size);
+    background-repeat: var(--custom-bg-repeat);
+    opacity: var(--custom-bg-opacity);
+    filter: blur(var(--custom-bg-blur));
+    transform: scale(var(--custom-bg-scale));
+    transform-origin: center;
+}
+
+body::after {
+    z-index: -1;
+    background: rgba(var(--custom-bg-dim-color), var(--custom-bg-dim));
+}
+
+.app-main {
+    background: rgba(var(--bg-dark-rgb), var(--main-surface-opacity));
+}
+
+.app-sidebar {
+    background: rgba(var(--sidebar-bg-rgb), var(--sidebar-surface-opacity));
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
+}
+
+.card,
+.dash-stat-card,
+.zone-card,
+.dash-action-btn,
+.prompt-card,
+.modal-card,
+.profile-creator-card,
+.profile-list-card,
+.cloud-card {
+    background-color: rgba(var(--bg-panel-rgb), var(--card-surface-opacity));
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
+    border-radius: var(--theme-radius);
+    border-width: var(--theme-card-border-width);
+}
